@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String nome;
 
@@ -21,7 +21,7 @@ public class Client {
 
     private String password;
 
-    public Long getId(){
+    public int getId(){
         return id;
     }
 
