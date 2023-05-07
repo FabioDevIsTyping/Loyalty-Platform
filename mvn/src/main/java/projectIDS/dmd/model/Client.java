@@ -21,12 +21,13 @@ public class Client {
 
     private String password;
 
+
     public int getId(){
-        return id;
+        return this.id;
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
