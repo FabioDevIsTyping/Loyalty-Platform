@@ -58,5 +58,5 @@ public class Client {
         this.password = password;
     }
 
-    // costruttori, getter e setter
+   
 }

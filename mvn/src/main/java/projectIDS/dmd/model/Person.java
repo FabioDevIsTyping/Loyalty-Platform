@@ -9,13 +9,6 @@ public class Person {
     private String taxIdCode;
     private String residence;
 
-    public Person(String name, String surname, LocalDate birthdate, String taxIdCode, String residence) {
-        this.name = name;
-        this.surname = surname;
-        this.birthdate = birthdate;
-        this.taxIdCode = taxIdCode;
-        this.residence = residence;
-    }
 
     // Getters and Setters for all properties
 

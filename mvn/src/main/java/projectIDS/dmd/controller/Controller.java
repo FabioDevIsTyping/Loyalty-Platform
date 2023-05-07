@@ -43,7 +43,7 @@ public class Controller {
         return false;
     }
 
-    @PutMapping("/modifyClient")
+    @PutMapping("/modifyClient ")
     public boolean modifyClient(@RequestBody Client client)
     {
         clientRepository.save(client);

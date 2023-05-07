@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table (name="admin")
-public class Admin extends Person{
+public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -19,7 +19,7 @@ public class Admin extends Person{
 
     private String cognome;
 
-    private PuntoVendita puntoVendita;
+    //private PuntoVendita puntoVendita;
 
 
     public int getId()
@@ -44,15 +44,15 @@ public class Admin extends Person{
         this.cognome=newCognome;
     }
 
-    public PuntoVendita getPuntoVendita()
-    {
-        return this.puntoVendita;
-    }
+    // public PuntoVendita getPuntoVendita()
+    // {
+    //     return this.puntoVendita;
+    // }
 
-    public void setPuntoVendita(PuntoVendita newPuntoVendita)
-    {
-        this.puntoVendita=newPuntoVendita;
-    }
+    // public void setPuntoVendita(PuntoVendita newPuntoVendita)
+    // {
+    //     this.puntoVendita=newPuntoVendita;
+    // }
 
 
     
