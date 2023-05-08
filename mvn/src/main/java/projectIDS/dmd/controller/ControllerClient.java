@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-public class Controller {
+public class ControllerClient {
 
     @Autowired
     ClientRepository clientRepository;
@@ -38,8 +38,7 @@ public class Controller {
         {
             clientRepository.deleteById(id);
         return true;
-        }
-        else 
+        } 
         return false;
     }
 
