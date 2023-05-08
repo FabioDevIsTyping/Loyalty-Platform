@@ -53,7 +53,7 @@ public class PuntoVendita {
     }
 
     public Azienda getAzienda() {
-        return azienda;
+        return this.azienda;
     }
 
     public void setAzienda(Azienda azienda) {

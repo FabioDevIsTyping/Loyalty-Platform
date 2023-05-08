@@ -1,9 +1,12 @@
 package projectIDS.dmd.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,13 +14,13 @@ import jakarta.persistence.Table;
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-
     private int id;
-
     private String nome;
-
     private String cognome;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "puntoVendita_id", referencedColumnName = "id")
+    private PuntoVendita puntoVendita;
+
 
     //private PuntoVendita puntoVendita;
 
@@ -44,15 +47,15 @@ public class Admin {
         this.cognome=newCognome;
     }
 
-    // public PuntoVendita getPuntoVendita()
-    // {
-    //     return this.puntoVendita;
-    // }
+     public PuntoVendita getPuntoVendita()
+     {
+        return this.puntoVendita;
+    }
 
-    // public void setPuntoVendita(PuntoVendita newPuntoVendita)
-    // {
-    //     this.puntoVendita=newPuntoVendita;
-    // }
+    public void setPuntoVendita(PuntoVendita newPuntoVendita)
+    {
+        this.puntoVendita=newPuntoVendita;
+    }
 
 
     

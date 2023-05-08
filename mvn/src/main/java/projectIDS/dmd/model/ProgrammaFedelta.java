@@ -17,12 +17,12 @@ import jakarta.persistence.Table;
 public class ProgrammaFedelta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int id;
     private String nomeProgramma;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "puntovendita_id")
+    @JoinColumn(name = "puntoVendita_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    public PuntoVendita puntoVendita;
 
     public int getId()
     {
@@ -39,7 +39,15 @@ public class ProgrammaFedelta {
         this.nomeProgramma=newNome;
     }
 
-    
+    public PuntoVendita getPuntoVendita()
+    {
+        return this.puntoVendita;
+    }
+
+    public void setPuntoVendita(PuntoVendita newPuntoVendita)
+    {
+        this.puntoVendita = newPuntoVendita;
+    }
 
     
     
