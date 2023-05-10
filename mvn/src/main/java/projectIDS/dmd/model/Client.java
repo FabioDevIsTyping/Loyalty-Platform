@@ -13,6 +13,7 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
+    private String cognome;
     private String username;
     private String email;
     private String password;
@@ -28,6 +29,13 @@ public class Client {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    public String getCognome() {
+        return this.cognome;
+    }
+
+    public void setCognome(String newCognome) {
+        this.cognome = newCognome;
     }
 
     public String getUsername() {
