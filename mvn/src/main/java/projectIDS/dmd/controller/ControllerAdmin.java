@@ -27,7 +27,7 @@ public class ControllerAdmin {
     }
     
     @PostMapping("/insertAdmin")
-    String addAdmin(@RequestBody Admin admin){
+    public String addAdmin(@RequestBody Admin admin){
         adminRepository.save(admin);
         return "Admin aggiunto con successo!";
     }

@@ -28,7 +28,7 @@ public class ControllerAzienda {
 
 
     @PostMapping("/insertAzienda")
-    String addAzienda(@RequestBody Azienda azienda){
+    public String addAzienda(@RequestBody Azienda azienda){
         aziendaRepository.save(azienda);
         return "Azienda aggiunta con successo!";
     }

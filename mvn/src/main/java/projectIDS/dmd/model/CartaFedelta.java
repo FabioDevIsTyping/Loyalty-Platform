@@ -1,7 +1,13 @@
 package projectIDS.dmd.model;
 
+import java.util.Date;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,13 +22,24 @@ public class CartaFedelta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne
-    @JoinColumn(name ="client_id")
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id", referencedColumnName="id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Client client;
+
+    @ManyToOne
+    @JoinColumn(name = "portafoglio_id")
+    private PortafoglioCliente portafoglioCliente;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ProgrammaFedelta_id")
     private ProgrammaFedelta programmaFedelta;
+
     private int punti;
+
+    private Date dataScadenza;
+    
 
     public int getId()
     {
@@ -58,6 +75,16 @@ public class CartaFedelta {
     public void setPunti(int newAmount)
     {
         this.punti = newAmount;
+    }
+
+    public Date getDataScadenza()
+    {
+        return this.dataScadenza;
+    }
+
+    public void setDataScadenza(Date newDate)
+    {
+        this.dataScadenza=newDate;
     }
 
 }

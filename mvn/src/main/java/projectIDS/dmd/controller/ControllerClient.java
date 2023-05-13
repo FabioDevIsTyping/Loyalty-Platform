@@ -27,7 +27,7 @@ public class ControllerClient {
     }
 
     @PostMapping("/insertClient")
-    String addClient(@RequestBody Client client){
+    public String addClient(@RequestBody Client client){
         clientRepository.save(client);
         return "Utente aggiunto con successo!";
     }

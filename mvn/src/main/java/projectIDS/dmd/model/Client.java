@@ -17,9 +17,10 @@ public class Client {
     private String username;
     private String email;
     private String password;
+    private String numeroTelefonico;   
 
 
-    public int getId(){
+    public int getId(){     
         return this.id;
     }
 
@@ -60,6 +61,17 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNumeroTelefonico()
+    {
+        return this.numeroTelefonico;
+    }
+
+    public void setNumeroTelefonico(String newNumero)
+    {
+        this.numeroTelefonico=newNumero;
+
     }
 
    

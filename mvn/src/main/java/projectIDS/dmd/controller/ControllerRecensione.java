@@ -9,15 +9,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import projectIDS.dmd.model.PuntoVendita;
 import projectIDS.dmd.model.Recensione;
+import projectIDS.dmd.repository.PuntoVenditaRepository;
 import projectIDS.dmd.repository.RecensioneRepository;
+
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
 public class ControllerRecensione {
-    
+    @Autowired
+    PuntoVenditaRepository puntoVenditaRepository;
     @Autowired
     RecensioneRepository recensioneRepository;
 
@@ -28,7 +33,7 @@ public class ControllerRecensione {
     }
 
     @PostMapping("/insertRecensione")
-    String addRecensione(@RequestBody Recensione recensione){
+    public String addRecensione(@RequestBody Recensione recensione){
         recensioneRepository.save(recensione);
         return "Recensione aggiunta con successo!";
     }
@@ -49,10 +54,21 @@ public class ControllerRecensione {
         return true;
     }
 
-//     @GetMapping("/puntoVendita/{id}/media")
-//     public Double getMediaVotiByPuntoVendita(@PathVariable int id) {
-//     return recensioneService.getMediaVotiBypuntoVendita(id);
-// }
+    @GetMapping("/puntoVendita/{id}")
+    public Double getMediaVotiByPuntoVendita(@PathVariable int id) {
+
+        PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get();
+        List <Recensione> listaRecensioni = recensioneRepository.findByPuntoVendita(puntoVendita);
+        int sommaVoti = 0;
+        for (Recensione r : listaRecensioni) {
+           sommaVoti += r.getVoto();
+    }
+
+double mediaVoti = (double) sommaVoti / listaRecensioni.size();
+        //List<Integer> votiRecensioni
+
+    return mediaVoti;
+}
 
 
     
