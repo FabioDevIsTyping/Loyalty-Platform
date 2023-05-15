@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import projectIDS.dmd.model.PuntoVendita;
+import projectIDS.dmd.model. PuntoVendita;
 import projectIDS.dmd.model.Recensione;
 import projectIDS.dmd.repository.PuntoVenditaRepository;
 import projectIDS.dmd.repository.RecensioneRepository;
@@ -54,7 +54,7 @@ public class ControllerRecensione {
         return true;
     }
 
-    @GetMapping("/puntoVendita/{id}")
+    @GetMapping("/getPuntoVenditaMedia/{id}")
     public Double getMediaVotiByPuntoVendita(@PathVariable int id) {
 
         PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get();

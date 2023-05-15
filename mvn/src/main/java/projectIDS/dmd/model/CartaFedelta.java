@@ -22,69 +22,112 @@ public class CartaFedelta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", referencedColumnName="id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Client client;
-
+    
     @ManyToOne
     @JoinColumn(name = "portafoglio_id")
     private PortafoglioCliente portafoglioCliente;
-
-    @OneToOne(cascade = CascadeType.ALL)
+    
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "ProgrammaFedelta_id")
     private ProgrammaFedelta programmaFedelta;
-
+    
     private int punti;
-
+    
     private Date dataScadenza;
     
-
-    public int getId()
-    {
+    /**
+     * Returns the id of this loyalty card.
+     *
+     * @return the id of this loyalty card
+     */
+    public int getId() {
         return this.id;
     }
-
-    public Client getClient()
-    {
+    
+    /**
+     * Returns the client that owns this loyalty card.
+     *
+     * @return the client that owns this loyalty card
+     */
+    public Client getClient() {
         return this.client;
     }
-
-    public void setClient(Client newClient)
-    {
-        this.client=newClient;
+    
+    /**
+     * Sets the client that owns this loyalty card.
+     *
+     * @param newClient the new client that owns this loyalty card
+     */
+    public void setClient(Client newClient) {
+        this.client = newClient;
     }
     
-    public ProgrammaFedelta getProgrogrammaFedelta()
-    {
+    /**
+     * Returns the loyalty program associated to this card.
+     *
+     * @return the loyalty program associated to this card
+     */
+    public ProgrammaFedelta getProgrammaFedelta() {
         return this.programmaFedelta;
     }
-
-    public void setProgrogrammaFedelta(ProgrammaFedelta newProgram)
-    {
-        this.programmaFedelta=newProgram;
+    
+    /**
+     * Sets the loyalty program associated to this card.
+     *
+     * @param newProgram the new loyalty program associated to this card
+     */
+    public void setProgrammaFedelta(ProgrammaFedelta newProgram) {
+        this.programmaFedelta = newProgram;
     }
-
-    public int getPunti()
-    {
+    
+    /**
+     * Returns the number of points associated to this loyalty card.
+     *
+     * @return the number of points associated to this loyalty card
+     */
+    public int getPunti() {
         return this.punti;
-
     }
-
-    public void setPunti(int newAmount)
-    {
+    
+    /**
+     * Sets the number of points associated to this loyalty card.
+     *
+     * @param newAmount the new number of points associated to this loyalty card
+     */
+    public void setPunti(int newAmount) {
         this.punti = newAmount;
     }
-
-    public Date getDataScadenza()
-    {
+    
+    /**
+     * Returns the expiration date of this loyalty card.
+     *
+     * @return the expiration date of this loyalty card
+     */
+    public Date getDataScadenza() {
         return this.dataScadenza;
     }
-
-    public void setDataScadenza(Date newDate)
-    {
-        this.dataScadenza=newDate;
+    
+    /**
+     * Sets the expiration date of this loyalty card.
+     *
+     * @param newDate the new expiration date of this loyalty card
+     */
+    public void setDataScadenza(Date newDate) {
+        this.dataScadenza = newDate;
     }
 
+    public PortafoglioCliente getPortafoglioCliente() {
+        return portafoglioCliente;
+    }
+
+    public void setPortafoglioCliente(PortafoglioCliente portafoglioCliente) {
+        this.portafoglioCliente = portafoglioCliente;
+    }
+    
+    
 }

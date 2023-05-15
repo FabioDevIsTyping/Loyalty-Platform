@@ -38,50 +38,95 @@ public class Recensione {
     @JoinColumn(name = "cliente_id", nullable = false)
     private Client cliente;
 
-    public int getId(){
-        return this.id;
-    }
+/**
+ * Returns the ID of the recensione
+ * 
+ * @return the ID of the recensione
+ */
+public int getId(){
+    return this.id;
+}
 
-    public int getVoto()
-    {
-        return this.voto;
-    }
+/**
+ * Returns the voto (rating) of the recensione
+ * 
+ * @return the voto of the recensione
+ */
+public int getVoto()
+{
+    return this.voto;
+}
 
-    public void setVoto(@Min(0) @Max(10) int newVoto)
-    {
-        this.voto = newVoto;
-    }
+/**
+ * Sets the voto (rating) of the recensione to the specified value
+ * 
+ * @param newVoto the new voto of the recensione
+ */
+public void setVoto(@Min(0) @Max(10) int newVoto)
+{
+    this.voto = newVoto;
+}
 
-    public String getDescrizione()
-    {
-        return this.descrizione;
-    }
+/**
+ * Returns the descrizione (description) of the recensione
+ * 
+ * @return the descrizione of the recensione
+ */
+public String getDescrizione()
+{
+    return this.descrizione;
+}
 
-    public void setDescrizione(String newDescrizione)
-    {
-        this.descrizione = newDescrizione;
-    }
+/**
+ * Sets the descrizione (description) of the recensione to the specified value
+ * 
+ * @param newDescrizione the new descrizione of the recensione
+ */
+public void setDescrizione(String newDescrizione)
+{
+    this.descrizione = newDescrizione;
+}
 
-    public PuntoVendita getPuntoVendita()
-    {
-        return this.puntoVendita;
-    }
+/**
+ * Returns the punto vendita (store) associated with the recensione
+ * 
+ * @return the punto vendita associated with the recensione
+ */
+public PuntoVendita getPuntoVendita()
+{
+    return this.puntoVendita;
+}
 
-    public void setPuntoVendita(PuntoVendita newPuntoVendita)
-    {
-        newPuntoVendita = this.puntoVendita;
-    }
+/**
+ * Sets the punto vendita (store) associated with the recensione to the specified value
+ * 
+ * @param newPuntoVendita the new punto vendita associated with the recensione
+ */
+public void setPuntoVendita(PuntoVendita newPuntoVendita)
+{
+    this.puntoVendita = newPuntoVendita;
+}
 
-    public Client getCliente()
-    {
-        return this.cliente;
-    }
+/**
+ * Returns the client associated with the recensione
+ * 
+ * @return the client associated with the recensione
+ */
+public Client getCliente()
+{
+    return this.cliente;
+}
 
-    public void setCliente(Client newCliente)
-    {
-        this.cliente=newCliente;
+/**
+ * Sets the client associated with the recensione to the specified value
+ * 
+ * @param newCliente the new client associated with the recensione
+ */
+public void setCliente(Client newCliente)
+{
+    this.cliente=newCliente;
+}
 
-    }
 
 
 }

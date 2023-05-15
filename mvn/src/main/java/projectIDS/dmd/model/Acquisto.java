@@ -16,48 +16,98 @@ public class Acquisto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    private int importoAcquisto;
     private Date dataAcquisto;
+    
     @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Client cliente;
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
+    
     @ManyToOne
     @JoinColumn(name = "puntoVendita_id" , nullable = false)
     private PuntoVendita puntoVendita;
 
-    public int getId()
-    {
+    /**
+     * Returns the ID of this purchase.
+     *
+     * @return the ID of this purchase.
+     */
+    public int getId() {
         return this.id;
     }
 
-    public Date getDataAcquisto()
-    {
+    /**
+     * Returns the purchase amount.
+     *
+     * @return the purchase amount.
+     */
+    public int getImportoAcquisto() {
+        return this.importoAcquisto;
+    }
+
+    /**
+     * Sets the purchase amount.
+     *
+     * @param newImporto the new purchase amount.
+     */
+    public void setImportoAcquisto(int newImporto) {
+        this.importoAcquisto = newImporto;
+    }
+
+    /**
+     * Returns the date of the purchase.
+     *
+     * @return the date of the purchase.
+     */
+    public Date getDataAcquisto() {
         return this.dataAcquisto;
     }
 
-    public void setDataAcquisto(Date newDate)
-    {
+    /**
+     * Sets the date of the purchase.
+     *
+     * @param newDate the new date of the purchase.
+     */
+    public void setDataAcquisto(Date newDate) {
         this.dataAcquisto = newDate;
     }
 
-    public Client getCliente()
-    {
-        return this.cliente;
+    /**
+     * Returns the client who made the purchase.
+     *
+     * @return the client who made the purchase.
+     */
+    public Client getCliente() {
+        return this.client;
     }
 
-    public void setCliente(Client newCliente)
-    {
-        this.cliente=newCliente;
+    /**
+     * Sets the client who made the purchase.
+     *
+     * @param newCliente the new client who made the purchase.
+     */
+    public void setCliente(Client newCliente) {
+        this.client = newCliente;
     }
 
-    public PuntoVendita getPuntoVendita()
-    {
+    /**
+     * Returns the store where the purchase was made.
+     *
+     * @return the store where the purchase was made.
+     */
+    public PuntoVendita getPuntoVendita() {
         return this.puntoVendita;
     }
 
-    public void setPuntoVendita(PuntoVendita newPuntoVendita)
-    {
+    /**
+     * Sets the store where the purchase was made.
+     *
+     * @param newPuntoVendita the new store where the purchase was made.
+     */
+    public void setPuntoVendita(PuntoVendita newPuntoVendita) {
         this.puntoVendita = newPuntoVendita;
     }
 
-    
 }
+

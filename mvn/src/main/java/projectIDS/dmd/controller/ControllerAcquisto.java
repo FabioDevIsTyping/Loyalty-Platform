@@ -19,6 +19,8 @@ import java.util.List;
 public class ControllerAcquisto {
     @Autowired
     AcquistoRepository acquistoRepository;
+    // @Autowired 
+    // ClientRepository clientRepository;
 
     @GetMapping("/getPurchases")
     public List<Acquisto> vediAcquisto(){
@@ -47,6 +49,14 @@ public class ControllerAcquisto {
         acquistoRepository.save(acquisto);
         return true;
     }
+
+    // @GetMapping("/getAcquistiByClient({id})")
+    // public List<Acquisto> getAcquistiByClient(@PathVariable int id)
+    // {
+    //     Client client = clientRepository.findById(id).get();
+    //     List<Acquisto> listaAcquisti = acquistoRepository.findByClient(client);
+    //     return listaAcquisti;
+    // }
 
     
 }

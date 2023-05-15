@@ -5,4 +5,5 @@ import projectIDS.dmd.model.Acquisto;
 
 public interface AcquistoRepository extends JpaRepository<Acquisto,Integer>{
     
+    // List<Acquisto> findByClient(Client client);
 }
