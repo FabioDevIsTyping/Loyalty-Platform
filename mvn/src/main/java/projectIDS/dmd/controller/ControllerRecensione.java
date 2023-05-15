@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import projectIDS.dmd.model. PuntoVendita;
+import projectIDS.dmd.model.PuntoVendita;
 import projectIDS.dmd.model.Recensione;
 import projectIDS.dmd.repository.PuntoVenditaRepository;
 import projectIDS.dmd.repository.RecensioneRepository;
