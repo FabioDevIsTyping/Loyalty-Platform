@@ -1,4 +1,4 @@
-# IdS-2022-DeVitis-Caggiano-DiFelice
+# IdS-2022-DeVitis-Caggiano
 <br />
 L’idea di questo progetto è aiutare tutte le attività ad incrementare il tasso di fidelizzazione,ritenere i clienti e acquisirne di nuovi.<br />
 La probabilità di vendere a un cliente esistente è compresa tra il 60% e il 70%, mentre a un potenziale nuovo cliente solo tra il 5% e il 20%. <br />
