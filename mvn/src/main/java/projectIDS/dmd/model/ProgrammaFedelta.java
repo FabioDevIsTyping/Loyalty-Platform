@@ -1,5 +1,6 @@
 package projectIDS.dmd.model;
 
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -25,6 +26,7 @@ public class ProgrammaFedelta {
     @JoinColumn(name = "puntoVendita_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     public PuntoVendita puntoVendita;
+
 
     /**
      * Returns the unique identifier of this ProgrammaFedelta object.

@@ -16,7 +16,6 @@ import projectIDS.dmd.repository.ClientRepository;
 import projectIDS.dmd.repository.PortafoglioClienteRepository;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -64,7 +63,6 @@ public class ControllerCartaFedelta {
             portafoglio.setCarteFedelta(listaCarteFedelta);
             portafoglio.setClient(clientRepository.findById(id).get());
             portafoglio.setNumeroCarte(1);
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
             portafoglio.setUltimoAggiornamento(now);
             portafoglioClienteRepository.save(portafoglio);
