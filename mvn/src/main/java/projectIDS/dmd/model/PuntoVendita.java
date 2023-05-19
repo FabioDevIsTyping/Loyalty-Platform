@@ -27,6 +27,17 @@ private String nomePuntoVendita;
 @JoinColumn(name = "azienda_id")
 @OnDelete(action = OnDeleteAction.CASCADE)
 public Azienda azienda;
+@ManyToOne
+@JoinColumn(name = "programmaFedelta_id")
+private ProgrammaFedelta programmaFedelta;
+
+public ProgrammaFedelta getProgrammaFedelta() {
+    return programmaFedelta;
+}
+
+public void setProgrammaFedelta(ProgrammaFedelta programmaFedelta) {
+    this.programmaFedelta = programmaFedelta;
+}
 
 /**
  * Returns the unique identifier of this PuntoVendita.

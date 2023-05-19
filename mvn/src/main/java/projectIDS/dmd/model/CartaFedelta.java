@@ -1,11 +1,14 @@
 package projectIDS.dmd.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -35,11 +38,32 @@ public class CartaFedelta {
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "ProgrammaFedelta_id")
     private ProgrammaFedelta programmaFedelta;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "puntoVendita_id")
+    private PuntoVendita puntoVendita;
+
     private int punti;
-    
+    @Nullable
+    private int livello;
+    @Nullable
+    private String nomeServizio;
+    @Nullable
+    private int percentualeCashback; 
+    private int totaleAcquisti;
+    @Nullable
+    @ElementCollection
+    private List<Azienda> aziendeAssociate; 
     private Date dataScadenza;
     
+    public int getTotaleAcquisti() {
+        return totaleAcquisti;
+    }
+
+    public void setTotaleAcquisti(int totaleAcquisti) {
+        this.totaleAcquisti = totaleAcquisti;
+    }
+
     /**
      * Returns the id of this loyalty card.
      *
@@ -128,6 +152,47 @@ public class CartaFedelta {
     public void setPortafoglioCliente(PortafoglioCliente portafoglioCliente) {
         this.portafoglioCliente = portafoglioCliente;
     }
+
+    public PuntoVendita getPuntoVendita() {
+        return puntoVendita;
+    }
+
+    public void setPuntoVendita(PuntoVendita puntoVendita) {
+        this.puntoVendita = puntoVendita;
+    }
+
+    public int getLivello() {
+        return livello;
+    }
+
+    public void setLivello(int livello) {
+        this.livello = livello;
+    }
+
+    public String getNomeServizio() {
+        return nomeServizio;
+    }
+
+    public void setNomeServizio(String nomeServizio) {
+        this.nomeServizio = nomeServizio;
+    }
+
+    public int getPercentualeCashback() {
+        return percentualeCashback;
+    }
+
+    public void setPercentualeCashback(int percentualeCashback) {
+        this.percentualeCashback = percentualeCashback;
+    }
+
+    public List<Azienda> getAziendeAssociate() {
+        return aziendeAssociate;
+    }
+
+    public void setAziendeAssociate(List<Azienda> aziendeAssociate) {
+        this.aziendeAssociate = aziendeAssociate;
+    }
+
     
     
 }

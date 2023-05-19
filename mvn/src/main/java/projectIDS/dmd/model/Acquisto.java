@@ -2,6 +2,7 @@ package projectIDS.dmd.model;
 
 import java.util.Date;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Acquisto {
     private Date dataAcquisto;
     
     @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
+    @JoinColumn(name = "client_id")
     private Client client;
     
     @ManyToOne
@@ -73,22 +74,13 @@ public class Acquisto {
         this.dataAcquisto = newDate;
     }
 
-    /**
-     * Returns the client who made the purchase.
-     *
-     * @return the client who made the purchase.
-     */
-    public Client getCliente() {
-        return this.client;
+   
+    public Client getClient() {
+        return client;
     }
 
-    /**
-     * Sets the client who made the purchase.
-     *
-     * @param newCliente the new client who made the purchase.
-     */
-    public void setCliente(Client newCliente) {
-        this.client = newCliente;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     /**

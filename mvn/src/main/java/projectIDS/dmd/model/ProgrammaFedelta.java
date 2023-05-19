@@ -22,10 +22,7 @@ public class ProgrammaFedelta {
 
     private String nomeProgramma;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "puntoVendita_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    public PuntoVendita puntoVendita;
+    
 
 
     /**
@@ -55,22 +52,6 @@ public class ProgrammaFedelta {
         this.nomeProgramma = newNome;
     }
 
-    /**
-     * Returns the PuntoVendita associated with this ProgrammaFedelta object.
-     *
-     * @return the PuntoVendita associated with this ProgrammaFedelta object
-     */
-    public PuntoVendita getPuntoVendita() {
-        return this.puntoVendita;
-    }
 
-    /**
-     * Sets the PuntoVendita associated with this ProgrammaFedelta object to the given PuntoVendita object.
-     *
-     * @param newPuntoVendita the new PuntoVendita to be associated with this ProgrammaFedelta object
-     */
-    public void setPuntoVendita(PuntoVendita newPuntoVendita) {
-        this.puntoVendita = newPuntoVendita;
-    }
 }
 
