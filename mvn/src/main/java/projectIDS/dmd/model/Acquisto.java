@@ -16,8 +16,7 @@ public class Acquisto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
-    private int importoAcquisto;
+    private double importoAcquisto;
     private Date dataAcquisto;
     
     @ManyToOne
@@ -42,7 +41,7 @@ public class Acquisto {
      *
      * @return the purchase amount.
      */
-    public int getImportoAcquisto() {
+    public double getImportoAcquisto() {
         return this.importoAcquisto;
     }
 
@@ -51,7 +50,7 @@ public class Acquisto {
      *
      * @param newImporto the new purchase amount.
      */
-    public void setImportoAcquisto(int newImporto) {
+    public void setImportoAcquisto(double newImporto) {
         this.importoAcquisto = newImporto;
     }
 

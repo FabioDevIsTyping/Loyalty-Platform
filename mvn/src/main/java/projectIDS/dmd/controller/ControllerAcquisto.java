@@ -77,9 +77,11 @@ public class ControllerAcquisto {
 
     @DeleteMapping("/deletePurchase/{id}")
     public boolean deleteAcquisto(@PathVariable int id){
+
         if(acquistoRepository.existsById(id))
         {
             acquistoRepository.deleteById(id);
+            
             return true;
         }
         return false;

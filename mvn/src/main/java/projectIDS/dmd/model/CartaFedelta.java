@@ -43,14 +43,14 @@ public class CartaFedelta {
     @JoinColumn(name = "puntoVendita_id")
     private PuntoVendita puntoVendita;
 
-    private int punti;
+    private double punti;
     @Nullable
     private int livello;
     @Nullable
     private String nomeServizio;
     @Nullable
-    private int percentualeCashback; 
-    private int totaleAcquisti;
+    private double percentualeCashback; 
+    private double totaleAcquisti;
     @Nullable
     @ElementCollection
     private List<Azienda> aziendeAssociate; 
@@ -106,7 +106,7 @@ public class CartaFedelta {
      *
      * @return the number of points associated to this loyalty card
      */
-    public int getPunti() {
+    public double getPunti() {
         return this.punti;
     }
     
@@ -115,7 +115,7 @@ public class CartaFedelta {
      *
      * @param newAmount the new number of points associated to this loyalty card
      */
-    public void setPunti(int newAmount) {
+    public void setPunti(double newAmount) {
         this.punti = newAmount;
     }
     
@@ -169,11 +169,11 @@ public class CartaFedelta {
         this.nomeServizio = nomeServizio;
     }
 
-    public int getPercentualeCashback() {
+    public double getPercentualeCashback() {
         return percentualeCashback;
     }
 
-    public void setPercentualeCashback(int percentualeCashback) {
+    public void setPercentualeCashback(double percentualeCashback) {
         this.percentualeCashback = percentualeCashback;
     }
 
@@ -185,11 +185,11 @@ public class CartaFedelta {
         this.aziendeAssociate = aziendeAssociate;
     }
 
-    public int getTotaleAcquisti() {
+    public double getTotaleAcquisti() {
         return totaleAcquisti;
     }
 
-    public void setTotaleAcquisti(int totaleAcquisti) {
+    public void setTotaleAcquisti(double totaleAcquisti) {
         this.totaleAcquisti = totaleAcquisti;
     }
     
