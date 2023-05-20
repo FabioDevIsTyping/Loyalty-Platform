@@ -55,14 +55,6 @@ public class CartaFedelta {
     @ElementCollection
     private List<Azienda> aziendeAssociate; 
     private Date dataScadenza;
-    
-    public int getTotaleAcquisti() {
-        return totaleAcquisti;
-    }
-
-    public void setTotaleAcquisti(int totaleAcquisti) {
-        this.totaleAcquisti = totaleAcquisti;
-    }
 
     /**
      * Returns the id of this loyalty card.
@@ -193,6 +185,12 @@ public class CartaFedelta {
         this.aziendeAssociate = aziendeAssociate;
     }
 
-    
+    public int getTotaleAcquisti() {
+        return totaleAcquisti;
+    }
+
+    public void setTotaleAcquisti(int totaleAcquisti) {
+        this.totaleAcquisti = totaleAcquisti;
+    }
     
 }
