@@ -13,13 +13,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import projectIDS.dmd.model.ComunicazionePromozionale;
+import projectIDS.dmd.model.PuntoVendita;
+import projectIDS.dmd.repository.ClientRepository;
 import projectIDS.dmd.repository.ComunicazionePromozionaleRepository;
+import projectIDS.dmd.repository.PuntoVenditaRepository;
 
 @RestController
 @CrossOrigin
 public class ControllerComunicazionePromozionale {
     @Autowired
     ComunicazionePromozionaleRepository comunicazioniPromozionaliRepository;
+    @Autowired
+    ClientRepository clientRepository;
+    @Autowired 
+    PuntoVenditaRepository puntoVenditaRepository;
 
     @GetMapping("/getComunicazioni")
     public List<ComunicazionePromozionale> vediMessaggi()
@@ -52,4 +59,22 @@ public class ControllerComunicazionePromozionale {
         comunicazioniPromozionaliRepository.save(messaggio);
         return true;
     }
+
+    @PostMapping("/insertComunicazione/{id}")
+public String addMessaggio(@RequestBody ComunicazionePromozionale comunicazione, @PathVariable int id) {
+    PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get(); // Supponendo che tu abbia un repository per l'entità PuntoVendita
+    
+    if (puntoVendita != null) {
+        comunicazione.setOrarioDiInvio(LocalDateTime.now());
+        comunicazione.setPuntoVendita(puntoVendita);
+        comunicazione.setClientiDestinatari(clientRepository.findByPuntiVendita(puntoVendita)); // Supponendo che il punto vendita abbia un metodo per ottenere la lista dei clienti
+        
+        comunicazioniPromozionaliRepository.save(comunicazione);
+        
+        return "Messaggio inviato con successo!";
+    }
+    
+    return "Punto vendita non trovato!";
+}
+
 }

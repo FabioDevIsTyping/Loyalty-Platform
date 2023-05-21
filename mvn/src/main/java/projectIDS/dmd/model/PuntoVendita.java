@@ -1,6 +1,8 @@
 package projectIDS.dmd.model;
 
 
+import java.util.List;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -10,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -30,6 +33,9 @@ public Azienda azienda;
 @ManyToOne
 @JoinColumn(name = "programmaFedelta_id")
 private ProgrammaFedelta programmaFedelta;
+
+@ManyToMany(mappedBy = "puntiVendita")
+private List<Client> clienti;
 
 public ProgrammaFedelta getProgrammaFedelta() {
     return programmaFedelta;
@@ -104,6 +110,14 @@ public Azienda getAzienda() {
  */
 public void setAzienda(Azienda azienda) {
     this.azienda = azienda;
+}
+
+public List<Client> getClienti() {
+    return clienti;
+}
+
+public void setClienti(List<Client> clienti) {
+    this.clienti = clienti;
 }
 
 
