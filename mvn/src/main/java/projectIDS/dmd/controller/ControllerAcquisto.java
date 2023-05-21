@@ -75,17 +75,24 @@ public class ControllerAcquisto {
         return "Acquisto aggiunto con successo!";
     }
 
-    @DeleteMapping("/deletePurchase/{id}")
-    public boolean deleteAcquisto(@PathVariable int id){
+    @DeleteMapping("/deletePurchase/{id}/{idCarta}")
+    public boolean deleteAcquisto(@PathVariable int id, @PathVariable int idCarta) {
+    if (acquistoRepository.existsById(id)) {
+        Acquisto acquisto = acquistoRepository.findById(id).get();
+        CartaFedelta carta = cartaFedeltaRepository.findById(idCarta).get();
 
-        if(acquistoRepository.existsById(id))
-        {
-            acquistoRepository.deleteById(id);
-            
-            return true;
-        }
-        return false;
+        // Sottrarre l'importo dell'acquisto dai punti attuali della carta fedeltà
+        carta.setPunti(carta.getPunti() - acquisto.getImportoAcquisto());
+
+        // Aggiornare la carta fedeltà nel repository
+        cartaFedeltaRepository.save(carta);
+
+        acquistoRepository.deleteById(id);
+        return true;
     }
+    return false;
+}
+
 
     @PutMapping("/modifyPurchase")
     public boolean modifyAcquisto(@RequestBody Acquisto acquisto)

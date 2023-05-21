@@ -20,6 +20,7 @@ public class Azienda {
     private String nomeAzienda;
     
     private String localitaAzienda;
+    
 
     /**
      * Returns the ID of the company.
