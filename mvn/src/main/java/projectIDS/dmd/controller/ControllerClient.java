@@ -21,7 +21,7 @@ public class ControllerClient {
     @Autowired
     ClientRepository clientRepository;
 
-    @GetMapping("/getClients")
+    @GetMapping("/getClienti")
     public List<Client> vediUtenti() {
         return (List<Client>) clientRepository.findAll();
     }
