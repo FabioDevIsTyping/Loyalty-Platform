@@ -30,3 +30,8 @@ I soggetti che interagiscono con la piattaforma sono i seguenti: <br />
 programma fedeltà hanno sottoscritto. Un cliente può iscriversi ad uno o più programmi fedeltà, ciò dipende dal punto vendita presso il quale si effettuano <br />
 gli acquisti. Inoltre ha accesso ad una area riservata al cliente dove può accedere ad informazioni personali, quali la propria tessera fedeltà, la cronologia <br />
 degli acquisti effettuati ed altro.
+**Dipendenti**
+**Titolari Azienda**
+**Amministratori**
+
+
