@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import projectIDS.dmd.model.persone.Client;
+import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 import projectIDS.dmd.repository.PersoneRepository.ClientRepository;
+import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -21,7 +24,9 @@ public class ControllerClient {
 
     @Autowired
     ClientRepository clientRepository;
-
+    @Autowired 
+    PuntoVenditaRepository puntoVenditaRepository;
+    
     @GetMapping("/getClienti")
     public List<Client> vediUtenti() {
         return (List<Client>) clientRepository.findAll();
@@ -49,6 +54,24 @@ public class ControllerClient {
         clientRepository.save(client);
         return true;
     }
+
+    @GetMapping("/getClienti/{id}")
+public List<Client> vediClientiPuntoVendita(@PathVariable int id) {
+    // Ottieni il punto vendita dal repository dei punti vendita utilizzando l'ID fornito
+    PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get();
+    
+    if (puntoVendita == null) {
+        // Punto vendita non trovato, gestire l'errore come preferisci
+        // Ad esempio, restituisci una risposta di errore o una lista vuota
+        return Collections.emptyList();
+    }
+    
+    // Ottieni la lista dei clienti appartenenti al punto vendita
+    List<Client> clientiPuntoVendita = clientRepository.findByPuntiVendita(puntoVendita);
+    
+    return clientiPuntoVendita;
+}
+
 
 
 }
