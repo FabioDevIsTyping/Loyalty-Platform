@@ -29,7 +29,7 @@ public class Admin {
 
     private String numeroTelefonico;
     
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "puntoVendita_id", referencedColumnName = "id")
     private PuntoVendita puntoVendita;
     
