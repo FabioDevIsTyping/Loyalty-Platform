@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DmdApplication<dmd>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "projectIDS.dmd.DmdApplication",
+            "projectName": "dmd",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
