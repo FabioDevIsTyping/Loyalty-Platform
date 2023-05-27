@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import projectIDS.dmd.model.persone.Admin;
 import projectIDS.dmd.model.persone.Dipendente;
+import projectIDS.dmd.repository.PersoneRepository.AdminRepository;
 import projectIDS.dmd.repository.PersoneRepository.DipendenteRepository;
 
 @RestController
@@ -20,6 +22,8 @@ import projectIDS.dmd.repository.PersoneRepository.DipendenteRepository;
 public class ControllerDipendente {
     @Autowired
     DipendenteRepository dipendenteRepository;
+    @Autowired
+    AdminRepository adminRepository;
 
     @GetMapping("/getDipendenti")
     public List<Dipendente> vediDipendenti()
@@ -50,5 +54,23 @@ public class ControllerDipendente {
     {
         dipendenteRepository.save(dipendente);
         return true;
+    }
+
+    @PostMapping("/changeDipendenteToAdmin")
+    public String changeDipendenteToAdmin(@RequestBody Dipendente dipendente){
+        Admin newAdmin = new Admin();
+        Dipendente newDipendente = dipendenteRepository.findById(dipendente.getId()).get();
+        
+        newAdmin.setNome(newDipendente.getNome());
+        newAdmin.setCognome(newDipendente.getCognome());
+        newAdmin.setEmail(newDipendente.getEmail());
+        newAdmin.setNumeroTelefonico(newDipendente.getNumeroTelefonico());
+        newAdmin.setPassword(newDipendente.getPassword());
+        newAdmin.setUsername(newDipendente.getUsername());
+        newAdmin.setPuntoVendita(newDipendente.getPuntoVendita());
+        adminRepository.save(newAdmin);
+        dipendenteRepository.delete(dipendente);
+
+        return "Admin aggiunto con successo!";
     }
 }

@@ -2,12 +2,14 @@ package projectIDS.dmd.model.persone;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 
@@ -30,6 +32,11 @@ public class Dipendente {
     @ManyToOne
     @JoinColumn(name="puntoVendita_id")
     private PuntoVendita puntoVendita;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "admin_id", referencedColumnName = "id")
+    private Admin admin;
+
 
 
     public int getId() {

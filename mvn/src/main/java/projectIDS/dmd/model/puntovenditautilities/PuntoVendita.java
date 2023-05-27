@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +38,7 @@ public Azienda azienda;
 private ProgrammaFedelta programmaFedelta;
 
 @ManyToMany(mappedBy = "puntiVendita")
+@JsonIgnore
 private List<Client> clienti;
 
 public ProgrammaFedelta getProgrammaFedelta() {

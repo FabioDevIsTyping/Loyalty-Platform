@@ -15,6 +15,7 @@ import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 import projectIDS.dmd.repository.PersoneRepository.ClientRepository;
 import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRepository;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,7 +30,9 @@ public class ControllerClient {
     
     @GetMapping("/getClienti")
     public List<Client> vediUtenti() {
-        return (List<Client>) clientRepository.findAll();
+        List<Client> listaClienti = new ArrayList<Client>();
+        listaClienti = clientRepository.findAll();
+        return listaClienti;
     }
 
     @PostMapping("/insertClient")
