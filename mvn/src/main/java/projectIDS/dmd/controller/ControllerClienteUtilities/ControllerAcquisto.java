@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import projectIDS.dmd.model.clienteutilities.Acquisto;
 import projectIDS.dmd.model.clienteutilities.CartaFedelta;
+import projectIDS.dmd.model.persone.Client;
 import projectIDS.dmd.repository.ClienteUtilitiesRepository.AcquistoRepository;
 import projectIDS.dmd.repository.ClienteUtilitiesRepository.CartaFedeltaRepository;
 import projectIDS.dmd.repository.PersoneRepository.ClientRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -102,13 +104,15 @@ public class ControllerAcquisto {
         return true;
     }
 
-    // @GetMapping("/getAcquistiByClient({id})")
-    // public List<Acquisto> getAcquistiByClient(@PathVariable int id)
-    // {
-    //     Client client = clientRepository.findById(id).get();
-    //     List<Acquisto> listaAcquisti = acquistoRepository.findByClient(client);
-    //     return listaAcquisti;
-    // }
+     @GetMapping("/getAcquistiByClient/{id}")
+     public List<Acquisto> getAcquistiByClient(@PathVariable int id)
+     {
+         Client client = clientRepository.findById(id).get();
+         if(client == null)
+         return Collections.emptyList();
+        List<Acquisto> listaAcquisti = acquistoRepository.findByClient(client);
+         return listaAcquisti;
+   }
 
     
 }

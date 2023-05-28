@@ -1,6 +1,8 @@
 package projectIDS.dmd.controller.ControllerPersone;
 
+import java.util.Collections;
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import projectIDS.dmd.model.persone.Admin;
 import projectIDS.dmd.model.persone.Dipendente;
+import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 import projectIDS.dmd.repository.PersoneRepository.AdminRepository;
 import projectIDS.dmd.repository.PersoneRepository.DipendenteRepository;
+import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRepository;
 
 @RestController
 @CrossOrigin
@@ -24,12 +28,31 @@ public class ControllerDipendente {
     DipendenteRepository dipendenteRepository;
     @Autowired
     AdminRepository adminRepository;
+    @Autowired
+    private PuntoVenditaRepository puntoVenditaRepository;
 
     @GetMapping("/getDipendenti")
     public List<Dipendente> vediDipendenti()
     {
         return (List<Dipendente>) dipendenteRepository.findAll();
     }
+
+    
+    @GetMapping("/getDipendentiByPuntoVenditaId/{id}")
+    public List<Dipendente> getDipendentiByPuntoVenditaId(@PathVariable int id) {
+        PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get();
+        if (puntoVendita == null) {
+            // Punto vendita non trovato, gestire l'errore come preferisci
+            // Ad esempio, restituisci una risposta di errore o una lista vuota
+            return Collections.emptyList();
+        }
+        List<Dipendente> dipendentiPuntoVendita = dipendenteRepository.findByPuntoVendita(puntoVendita);
+        return dipendentiPuntoVendita;
+
+
+    }
+    
+
 
     @PostMapping("/insertDipendente")
     public String addDipendente(@RequestBody Dipendente dipendente)
