@@ -2,6 +2,8 @@ package projectIDS.dmd.model.clienteutilities;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +29,7 @@ public class Acquisto {
     
     @ManyToOne
     @JoinColumn(name = "puntoVendita_id" , nullable = false)
+    @JsonIgnore
     private PuntoVendita puntoVendita;
 
     /**

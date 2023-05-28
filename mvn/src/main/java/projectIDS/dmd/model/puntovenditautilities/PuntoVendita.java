@@ -16,7 +16,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import projectIDS.dmd.model.clienteutilities.CartaFedelta;
 import projectIDS.dmd.model.persone.Client;
 
 
@@ -36,6 +38,11 @@ public Azienda azienda;
 @ManyToOne
 @JoinColumn(name = "programmaFedelta_id")
 private ProgrammaFedelta programmaFedelta;
+
+@OneToMany(mappedBy = "puntoVendita")
+@JsonIgnore
+private List<CartaFedelta> carteFedelta;
+
 
 @ManyToMany(mappedBy = "puntiVendita")
 @JsonIgnore
@@ -122,6 +129,14 @@ public List<Client> getClienti() {
 
 public void setClienti(List<Client> clienti) {
     this.clienti = clienti;
+}
+
+public List<CartaFedelta> getCarteFedelta() {
+    return carteFedelta;
+}
+
+public void setCarteFedelta(List<CartaFedelta> carteFedelta) {
+    this.carteFedelta = carteFedelta;
 }
 
 
