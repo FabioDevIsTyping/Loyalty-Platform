@@ -42,49 +42,105 @@ public class ComunicazionePromozionale {
 
     private LocalDateTime orarioDiInvio;
 
-    public int getId() {
-        return id;
-    }
+/**
+ * Restituisce l'ID di questa comunicazione promozionale.
+ *
+ * @return l'ID di questa comunicazione promozionale.
+ */
+public int getId() {
+    return this.id;
+}
 
-    public String getMessaggio() {
-        return messaggio;
-    }
+/**
+ * Restituisce il messaggio della comunicazione promozionale.
+ *
+ * @return il messaggio della comunicazione promozionale.
+ */
+public String getMessaggio() {
+    return this.messaggio;
+}
 
-    public void setMessaggio(String messaggio) {
-        this.messaggio = messaggio;
-    }
+/**
+ * Imposta il messaggio della comunicazione promozionale.
+ *
+ * @param messaggio il nuovo messaggio della comunicazione promozionale.
+ */
+public void setMessaggio(String messaggio) {
+    this.messaggio = messaggio;
+}
 
-    public List<Client> getClientiDestinatari() {
-        return clientiDestinatari;
-    }
+/**
+ * Restituisce la lista dei clienti destinatari della comunicazione promozionale.
+ *
+ * @return la lista dei clienti destinatari della comunicazione promozionale.
+ */
+public List<Client> getClientiDestinatari() {
+    return this.clientiDestinatari;
+}
 
-    public void setClientiDestinatari(List<Client> clientiDestinatari) {
-        this.clientiDestinatari = clientiDestinatari;
-    }
+/**
+ * Imposta la lista dei clienti destinatari della comunicazione promozionale.
+ *
+ * @param clientiDestinatari la nuova lista dei clienti destinatari della comunicazione promozionale.
+ */
+public void setClientiDestinatari(List<Client> clientiDestinatari) {
+    this.clientiDestinatari = clientiDestinatari;
+}
 
-    public PuntoVendita getPuntoVendita() {
-        return puntoVenditaMittente;
-    }
+/**
+ * Restituisce il punto vendita mittente della comunicazione promozionale.
+ *
+ * @return il punto vendita mittente della comunicazione promozionale.
+ */
+public PuntoVendita getPuntoVendita() {
+    return this.puntoVenditaMittente;
+}
 
-    public void setPuntoVendita(PuntoVendita puntoVendita) {
-        this.puntoVenditaMittente = puntoVendita;
-    }
+/**
+ * Imposta il punto vendita mittente della comunicazione promozionale.
+ *
+ * @param puntoVendita il nuovo punto vendita mittente della comunicazione promozionale.
+ */
+public void setPuntoVendita(PuntoVendita puntoVendita) {
+    this.puntoVenditaMittente = puntoVendita;
+}
 
-    public TipoComunicazionePromozionale getTipoComunicazionePromozionale() {
-        return tipoComunicazionePromozionale;
-    }
+/**
+ * Restituisce il tipo di comunicazione promozionale.
+ *
+ * @return il tipo di comunicazione promozionale.
+ */
+public TipoComunicazionePromozionale getTipoComunicazionePromozionale() {
+    return this.tipoComunicazionePromozionale;
+}
 
-    public void setTipoComunicazionePromozionale(TipoComunicazionePromozionale tipoComunicazionePromozionale) {
-        this.tipoComunicazionePromozionale = tipoComunicazionePromozionale;
-    }
+/**
+ * Imposta il tipo di comunicazione promozionale.
+ *
+ * @param tipoComunicazionePromozionale il nuovo tipo di comunicazione promozionale.
+ */
+public void setTipoComunicazionePromozionale(TipoComunicazionePromozionale tipoComunicazionePromozionale) {
+    this.tipoComunicazionePromozionale = tipoComunicazionePromozionale;
+}
 
-    public LocalDateTime getOrarioDiInvio() {
-        return orarioDiInvio;
-    }
+/**
+ * Restituisce l'orario di invio della comunicazione promozionale.
+ *
+ * @return l'orario di invio della comunicazione promozionale.
+ */
+public LocalDateTime getOrarioDiInvio() {
+    return this.orarioDiInvio;
+}
 
-    public void setOrarioDiInvio(LocalDateTime orarioDiInvio) {
-        this.orarioDiInvio = orarioDiInvio;
-    }
+/**
+ * Imposta l'orario di invio della comunicazione promozionale.
+ *
+ * @param orarioDiInvio il nuovo orario di invio della comunicazione promozionale.
+ */
+public void setOrarioDiInvio(LocalDateTime orarioDiInvio) {
+    this.orarioDiInvio = orarioDiInvio;
+}
+
 
     
 

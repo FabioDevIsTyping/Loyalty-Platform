@@ -48,97 +48,124 @@ private List<CartaFedelta> carteFedelta;
 @JsonIgnore
 private List<Client> clienti;
 
-public ProgrammaFedelta getProgrammaFedelta() {
-    return programmaFedelta;
-}
 
-public void setProgrammaFedelta(ProgrammaFedelta programmaFedelta) {
-    this.programmaFedelta = programmaFedelta;
-}
 
 /**
- * Returns the unique identifier of this PuntoVendita.
+ * Restituisce l'identificatore univoco di questo PuntoVendita.
  *
- * @return the identifier of this PuntoVendita
+ * @return l'identificatore di questo PuntoVendita
  */
-public int getId(){
+public int getId() {
     return this.id;
 }
 
 /**
- * Returns the name of this PuntoVendita.
+ * Restituisce il nome di questo PuntoVendita.
  *
- * @return the name of this PuntoVendita
+ * @return il nome di questo PuntoVendita
  */
-public String getNomePuntoVendita()
-{
+public String getNomePuntoVendita() {
     return this.nomePuntoVendita;
 }
 
 /**
- * Sets the name of this PuntoVendita to the given String.
+ * Imposta il nome di questo PuntoVendita con la stringa fornita.
  *
- * @param nome the new name of this PuntoVendita
+ * @param nome il nuovo nome di questo PuntoVendita
  */
-public void setNomePuntoVendita(String nome)
-{
+public void setNomePuntoVendita(String nome) {
     this.nomePuntoVendita = nome;
 }
 
 /**
- * Returns the location of this PuntoVendita.
+ * Restituisce la località di questo PuntoVendita.
  *
- * @return the location of this PuntoVendita
+ * @return la località di questo PuntoVendita
  */
-public String getLocalita()
-{
+public String getLocalita() {
     return this.localita;
 }
 
 /**
- * Sets the location of this PuntoVendita to the given String.
+ * Imposta la località di questo PuntoVendita con la stringa fornita.
  *
- * @param newLocalita the new location of this PuntoVendita
+ * @param newLocalita la nuova località di questo PuntoVendita
  */
-public void setLocalita(String newLocalita)
-{
+public void setLocalita(String newLocalita) {
     this.localita = newLocalita;
 }
 
 /**
- * Returns the Azienda associated with this PuntoVendita.
+ * Restituisce l'Azienda associata a questo PuntoVendita.
  *
- * @return the Azienda associated with this PuntoVendita
+ * @return l'Azienda associata a questo PuntoVendita
  */
 public Azienda getAzienda() {
     return this.azienda;
 }
 
 /**
- * Sets the Azienda associated with this PuntoVendita to the given Azienda object.
+ * Imposta l'Azienda associata a questo PuntoVendita con l'oggetto Azienda fornito.
  *
- * @param azienda the new Azienda associated with this PuntoVendita
+ * @param azienda la nuova Azienda associata a questo PuntoVendita
  */
 public void setAzienda(Azienda azienda) {
     this.azienda = azienda;
 }
 
+/**
+ * Restituisce la lista dei clienti associati a questo PuntoVendita.
+ *
+ * @return la lista dei clienti associati a questo PuntoVendita
+ */
 public List<Client> getClienti() {
     return clienti;
 }
 
+/**
+ * Imposta la lista dei clienti associati a questo PuntoVendita.
+ *
+ * @param clienti la nuova lista dei clienti associati a questo PuntoVendita
+ */
 public void setClienti(List<Client> clienti) {
     this.clienti = clienti;
 }
 
+/**
+ * Restituisce la lista delle CarteFedelta associate a questo PuntoVendita.
+ *
+ * @return la lista delle CarteFedelta associate a questo PuntoVendita
+ */
 public List<CartaFedelta> getCarteFedelta() {
     return carteFedelta;
 }
 
+/**
+ * Imposta la lista delle CarteFedelta associate a questo PuntoVendita.
+ *
+ * @param carteFedelta la nuova lista delle CarteFedelta associate a questo PuntoVendita
+ */
 public void setCarteFedelta(List<CartaFedelta> carteFedelta) {
     this.carteFedelta = carteFedelta;
 }
 
+/**
+ * Restituisce il ProgrammaFedelta associato a questo PuntoVendita.
+ *
+ * @return il ProgrammaFedelta associato a questo PuntoVendita
+ */
+public ProgrammaFedelta getProgrammaFedelta() {
+    return programmaFedelta;
+}
+
+/**
+ * Imposta il ProgrammaFedelta associato a questo PuntoVendita.
+ *
+ * @param programmaFedelta il nuovo ProgrammaFedelta associato a questo PuntoVendita
+ */
+public void setProgrammaFedelta(ProgrammaFedelta programmaFedelta) {
+    this.programmaFedelta = programmaFedelta;
+}
 
 
     

@@ -16,17 +16,32 @@ public class TipoComunicazionePromozionale {
     private String nomeComunicazione;
 
 
-    public int getId() {
-        return id;
-    }
-    
-    public String getNomeComunicazione() {
-        return nomeComunicazione;
-    }
+/**
+ * Restituisce l'ID di questa comunicazione.
+ *
+ * @return l'ID di questa comunicazione
+ */
+public int getId() {
+    return id;
+}
 
-    public void setNomeComunicazione(String nomeComunicazione) {
-        this.nomeComunicazione = nomeComunicazione;
-    }
+/**
+ * Restituisce il nome della comunicazione.
+ *
+ * @return il nome della comunicazione
+ */
+public String getNomeComunicazione() {
+    return nomeComunicazione;
+}
+
+/**
+ * Imposta il nome della comunicazione.
+ *
+ * @param nomeComunicazione il nuovo nome della comunicazione
+ */
+public void setNomeComunicazione(String nomeComunicazione) {
+    this.nomeComunicazione = nomeComunicazione;
+}
 
 
    

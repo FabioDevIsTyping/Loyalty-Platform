@@ -21,50 +21,52 @@ public class Azienda {
     
     private String localitaAzienda;
     
+/**
+ * Restituisce l'ID dell'azienda.
+ *
+ * @return l'ID dell'azienda
+ */
+public int getId() {
+    return this.id;
+}
 
-    /**
-     * Returns the ID of the company.
-     * 
-     * @return the ID of the company
-     */
-    public int getId() {
-        return this.id;
-    }
+/**
+ * Restituisce il nome dell'azienda.
+ *
+ * @return il nome dell'azienda
+ */
+public String getNomeAzienda() {
+    return this.nomeAzienda;
+}
 
-    /**
-     * Returns the name of the company.
-     * 
-     * @return the name of the company
-     */
-    public String getNomeAzienda() {
-        return this.nomeAzienda;
-    }
+/**
+ * Imposta il nome dell'azienda.
+ *
+ * @param newNomeAzienda il nuovo nome dell'azienda
+ */
+public void setNomeAzienda(String newNomeAzienda) {
+    this.nomeAzienda = newNomeAzienda;
+}
 
-    /**
-     * Sets the name of the company.
-     * 
-     * @param newNomeAzienda the new name of the company
-     */
-    public void setNomeAzienda(String newNomeAzienda) {
-        this.nomeAzienda = newNomeAzienda;
-    }
+/**
+ * Restituisce la località dell'azienda.
+ *
+ * @return la località dell'azienda
+ */
+public String getLocalitaAzienda() {
+    return this.localitaAzienda;
+}
 
-    /**
-     * Returns the location of the company.
-     * 
-     * @return the location of the company
-     */
-    public String getLocalitaAzienda() {
-        return this.localitaAzienda;
-    }
+/**
+ * Imposta la località dell'azienda.
+ *
+ * @param newLocalita la nuova località dell'azienda
+ */
+public void setLocalitaAzienda(String newLocalita) {
+    this.localitaAzienda = newLocalita;
+}
 
-    /**
-     * Sets the location of the company.
-     * 
-     * @param newLocalita the new location of the company
-     */
-    public void setLocalitaAzienda(String newLocalita) {
-        this.localitaAzienda = newLocalita;
-    }
+
+
 } 
 
