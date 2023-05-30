@@ -42,8 +42,8 @@ public class ControllerDipendente {
     public List<Dipendente> getDipendentiByPuntoVenditaId(@PathVariable int id) {
         PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get();
         if (puntoVendita == null) {
-            // Punto vendita non trovato, gestire l'errore come preferisci
-            // Ad esempio, restituisci una risposta di errore o una lista vuota
+            // Punto vendita non trovato, restituisco una lista vuota
+
             return Collections.emptyList();
         }
         List<Dipendente> dipendentiPuntoVendita = dipendenteRepository.findByPuntoVendita(puntoVendita);

@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import projectIDS.dmd.controller.ControllerPersone.ControllerClient;
+import projectIDS.dmd.model.persone.Client;
+import projectIDS.dmd.model.puntovenditautilities.ComunicazionePromozionale;
 import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
+import projectIDS.dmd.model.puntovenditautilities.TipoComunicazionePromozionale;
 import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRepository;
 
 import java.util.List;
@@ -21,6 +25,12 @@ public class ControllerPuntoVendita {
 
     @Autowired
     PuntoVenditaRepository puntoVenditaRepository;
+    @Autowired
+    private ControllerTipoComunicazionePromozionale controllerTipoComunicazionePromozionale;
+    @Autowired
+    private ControllerComunicazionePromozionale controllerComunicazionePromozionale;
+    @Autowired
+    private ControllerClient controllerClient;
 
     @GetMapping("/getPuntiVendita")
     public List<PuntoVendita> vediPuntiVendita() {
@@ -49,6 +59,27 @@ public class ControllerPuntoVendita {
         puntoVenditaRepository.save(negozio);
         return true;
     }
+
+    @GetMapping("/sceltaTipoComunicazione")
+    public List<TipoComunicazionePromozionale> sceltTipoComunicazionePromozionale()
+    {
+        return controllerTipoComunicazionePromozionale.vediTipiComunicazione();
+    }
+
+    @GetMapping("/richiestaListaClienti/{id}")
+    public List<Client> richiestaListaClienti(@PathVariable int id)
+    {
+        return controllerClient.vediClientiPuntoVendita(id);
+    }
+
+    @PostMapping("/invioComunicazione")
+    public String invioComunicazione(@RequestBody ComunicazionePromozionale comunicazione)
+    {
+        return controllerComunicazionePromozionale.addMessaggio(comunicazione);
+
+    }
+
+
 
     
 }
