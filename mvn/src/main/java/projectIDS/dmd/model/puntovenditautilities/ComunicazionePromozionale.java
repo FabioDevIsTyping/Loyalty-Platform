@@ -18,6 +18,24 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import projectIDS.dmd.model.persone.Client;
 
+
+/**
+ * Rappresenta una comunicazione promozionale nel sistema.
+ *
+ * 
+ * La classe rappresenta una comunicazione promozionale con le sue informazioni di base, come l'ID (chiave primaria),
+ * il messaggio della comunicazione, il punto vendita mittente, il tipo di comunicazione promozionale,
+ * i clienti destinatari e l'orario di invio della comunicazione.
+ * 
+ * L'identificatore unico per una comunicazione promozionale è l'id, che viene generato
+ * automaticamente attraverso una strategia di generazione.
+ * 
+ * La classe è annotata con @Entity per indicare che è una classe persistente e
+ * può essere salvata nel database. La tabella associata a questa classe nel 
+ * database è denominata "Comunicazioni Promozionali" e viene specificato utilizzando 
+ * l'annotazione @Table.
+ */
+
 @Entity
 @Table(name = "Comunicazioni Promozionali")
 public class ComunicazionePromozionale {

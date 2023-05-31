@@ -14,6 +14,26 @@ import jakarta.persistence.Table;
 import projectIDS.dmd.model.persone.Client;
 import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 
+
+/**
+ * Rappresenta un acquisto nel sistema.
+ *
+ * La classe rappresenta un acquisto e contiene informazioni come l'ID (chiave primaria), l'importo dell'acquisto
+ * e la data dell'acquisto.
+ * 
+ * L'identificatore unico per un acquisto è l'id, che viene generato
+ * automaticamente attraverso una strategia di generazione.
+ * 
+ * La classe è annotata con @Entity per indicare che è una classe persistente e
+ * può essere salvata nel database. La tabella associata a questa classe nel 
+ * database è denominata "Acquisti" e viene specificato utilizzando 
+ * l'annotazione @Table. 
+ * 
+ * Infine l'annotazione @JsonIgnore è stata introdotta per indicare che la relazione con l'attributo puntoVendita
+ * deve essere ignorata durante la serializzazione in formato Json, in questo modo non si vanno a creare loop infiniti
+ * dovuti alla relazione many to many quando si cercherà di effettuare una get.
+ * 
+ */
 @Entity 
 @Table (name="Acquisti")
 public class Acquisto {

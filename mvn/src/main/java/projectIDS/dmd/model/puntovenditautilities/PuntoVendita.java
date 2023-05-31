@@ -21,7 +21,25 @@ import jakarta.persistence.Table;
 import projectIDS.dmd.model.clienteutilities.CartaFedelta;
 import projectIDS.dmd.model.persone.Client;
 
-
+/**
+ * Rappresenta un punto vendita nel sistema.
+ *
+ * 
+ * 
+ * La classe rappresenta un punto vendita con le sue informazioni di base, come l'ID (chiave primaria),
+ * la località e il nome del punto vendita. Un punto vendita può essere associato a un'azienda tramite
+ * una relazione many-to-one, a un programma fedeltà tramite una relazione many-to-one e a una lista di
+ * carte fedeltà tramite una relazione one-to-many. Inoltre, è possibile avere una relazione many-to-many
+ * con la classe `Client`, rappresentando i clienti associati al punto vendita.
+ * 
+ * L'identificatore unico per un punto vendita è l'id, che viene generato
+ * automaticamente attraverso una strategia di generazione.
+ * 
+ * La classe è annotata con @Entity per indicare che è una classe persistente e
+ * può essere salvata nel database. La tabella associata a questa classe nel 
+ * database è denominata "puntovendita" e viene specificato utilizzando 
+ * l'annotazione @Table.
+ */
 @Entity
 @Table (name="puntovendita")
 public class PuntoVendita {

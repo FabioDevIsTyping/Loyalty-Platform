@@ -7,7 +7,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /**
- * A class representing a company.
+ * Rappresenta un'azienda nel sistema.
+ *
+ * La classe rappresenta un'azienda con le sue informazioni di base, come l'ID (chiave primaria),
+ * il nome dell'azienda e la località dell'azienda.
+ * 
+ * L'identificatore unico per un azienda è l'id, che viene generato
+ * automaticamente attraverso una strategia di generazione.
+ * 
+ * La classe è annotata con @Entity per indicare che è una classe persistente e
+ * può essere salvata nel database. La tabella associata a questa classe nel 
+ * database è denominata "azienda" e viene specificato utilizzando 
+ * l'annotazione @Table.
  */
 @Entity
 @Table(name = "azienda")

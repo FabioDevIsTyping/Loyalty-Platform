@@ -6,6 +6,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Rappresenta un programma fedeltà nel sistema.
+ *
+ * La classe rappresenta un programma fedeltà con le sue informazioni di base, come l'ID (chiave primaria)
+ * e il nome del programma.
+ * 
+ * L'identificatore unico per un programma fedeltà è l'id, che viene generato
+ * automaticamente attraverso una strategia di generazione.
+ * 
+ * La classe è annotata con @Entity per indicare che è una classe persistente e
+ * può essere salvata nel database. La tabella associata a questa classe nel 
+ * database è denominata "programmaFedelta" e viene specificato utilizzando 
+ * l'annotazione @Table.
+ */
 @Entity
 @Table(name = "programmaFedelta")
 public class ProgrammaFedelta {
