@@ -82,12 +82,72 @@ Il cliente può accedere alle informazioni su tutte le proprie carte fedeltà al
 ```http
   DELETE localhost:8080/deleteCliente/{id}
 ```
+#### Admin
 
+- Inserisce un admin all'interno della piattaforma.
+```http
+  POST /localhost:8080/insertClient
+```
+- Ritorna la lista di tutti gli admin presenti nella piattaforma.
 
+```http
+  GET /localhost:8080/getAdmins 
+```
+- Cancella un determinato admin dalla piattaforma dato l'id dell' admin da cancellare.
+```http
+  DELETE localhost:8080/deleteAdmin/{id}
+```
+#### Dipendente
+
+- Inserisce un dipendente all'interno della piattaforma.
+```http
+  POST /localhost:8080/insertDipendente
+```
+- Cambia un dipendente e lo fa diventare admin presso il punto vendita del quale era dipendente.
+```http
+  POST /localhost:8080/changeDipendenteToAdmin
+```
+
+- Ritorna la lista di tutti i dipendenti presenti nella piattaforma.
+
+```http
+  GET /localhost:8080/getDipendenti
+```
+
+- Ritorna la lista di tutti i dipendenti presenti nella piattaforma di un punto vendita x, dato l'id di questo punto vendita.
+
+```http
+  GET /localhost:8080/getDipendentiByPuntoVenditaId/{id}
+```
+- Cancella un determinato dipendente dalla piattaforma dato l'id del dipendente da cancellare.
+```http
+  DELETE localhost:8080/deleteDipendente/{id}
+```
+#### Titolare Azienda
+- Inserisce un titolare azienda all'interno della piattaforma.
+```http
+  POST /localhost:8080/insertTitolareAzienda
+```
+- Ritorna la lista di tutti i titolari azienda presenti nella piattaforma.
+
+```http
+  GET /localhost:8080/getTitolareAzienda
+```
+- Cancella un determinato titolare azienda dalla piattaforma dato l'id del titolare azienda da cancellare.
+```http
+  DELETE localhost:8080/deleteTitolareAzienda/{id}
+```
+- Ritorna la lista di tutti i dipendenti presenti in uno dei suoi punti vendita.
+
+```http
+  GET /localhost:8080/getListaDipendenti
+```
+- Vede la lista dei programmi fedeltà disponibili.
+```http
+  GET /localhost:8080/getListaDipendenti
+```
 ## Authors
 
 - [@Fabio De Vitis Michele](https://github.com/FabioDevIsTyping)
 - [@Matteo Caggiano](https://github.com/caggicaggi)
-
-
 
