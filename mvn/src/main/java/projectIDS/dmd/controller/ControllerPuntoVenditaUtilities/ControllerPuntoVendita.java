@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import projectIDS.dmd.controller.ControllerClienteUtilities.ControllerCartaFedelta;
 import projectIDS.dmd.controller.ControllerPersone.ControllerClient;
+import projectIDS.dmd.model.clienteutilities.CartaFedelta;
 import projectIDS.dmd.model.persone.Client;
 import projectIDS.dmd.model.puntovenditautilities.ComunicazionePromozionale;
 import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
@@ -31,6 +33,8 @@ public class ControllerPuntoVendita {
     private ControllerComunicazionePromozionale controllerComunicazionePromozionale;
     @Autowired
     private ControllerClient controllerClient;
+    @Autowired
+    private ControllerCartaFedelta controllerCartaFedelta;
 
     @GetMapping("/getPuntiVendita")
     public List<PuntoVendita> vediPuntiVendita() {
@@ -77,6 +81,12 @@ public class ControllerPuntoVendita {
     {
         return controllerComunicazionePromozionale.addMessaggio(comunicazione);
 
+    }
+
+    @PostMapping("/creazioneCartaFedelta/{id}")
+    public String creazioneCartaFedelta(@RequestBody CartaFedelta carta,@PathVariable int id)
+    {
+        return controllerCartaFedelta.addCartaFedelta(carta, id);
     }
 
 

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import projectIDS.dmd.controller.ControllerPuntoVenditaUtilities.ControllerProgrammaFedelta;
 import projectIDS.dmd.model.persone.Dipendente;
 import projectIDS.dmd.model.persone.TitolareAzienda;
+import projectIDS.dmd.model.puntovenditautilities.ProgrammaFedelta;
 import projectIDS.dmd.repository.PersoneRepository.TitolareAziendaRepository;
 
 @RestController
@@ -22,7 +24,10 @@ public class ControllerTitolareAzienda {
     @Autowired
     TitolareAziendaRepository titolareAziendaRepository;
     @Autowired
-private ControllerDipendente controllerDipendente;
+    private ControllerDipendente controllerDipendente;
+    @Autowired 
+    private ControllerProgrammaFedelta controllerProgrammaFedelta;
+
 
     @GetMapping("/getTitolareAzienda")
     public List<TitolareAzienda> vediTitolareAzienda(){
@@ -54,6 +59,12 @@ private ControllerDipendente controllerDipendente;
     @GetMapping("/getListaDipendenti")
     public List<Dipendente> getDipendenti() {
         return controllerDipendente.vediDipendenti();
+    }
+
+    @GetMapping("/adesioneProgrammaFedelta")
+    public List<ProgrammaFedelta> adesioneProgrammaFedelta()
+    {
+        return controllerProgrammaFedelta.vediProgramma();
     }
 
 
