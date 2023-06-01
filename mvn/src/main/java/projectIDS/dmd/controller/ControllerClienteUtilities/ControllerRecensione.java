@@ -17,26 +17,59 @@ import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRep
 
 import java.util.List;
 
+/**
+ * Questa classe rappresenta il controller per le operazioni relative alle recensioni.
+ *
+ * @RestController è un'annotazione in Spring che viene utilizzata per indicare che la classe è un controller,
+ * che gestisce le richieste HTTP e restituisce i risultati come risposte HTTP.
+ * In sostanza, definisce un endpoint REST che può essere chiamato per eseguire operazioni specifiche.
+ *
+ * @CrossOrigin è un'annotazione che viene utilizzata per consentire le richieste provenienti da domini diversi.
+ * Abilitando questa annotazione, il controller accetta richieste provenienti da un dominio diverso da quello in cui è
+ * ospitato il server.
+ *
+ * @Autowired è un'annotazione di Spring che viene utilizzata per eseguire l'iniezione delle dipendenze. In questo caso,
+ * viene utilizzata per iniettare istanze di PuntoVenditaRepository e RecensioneRepository nella classe ControllerRecensione.
+ * L'iniezione delle dipendenze permette di utilizzare facilmente i metodi e le funzionalità offerte dalle repository senza
+ * doverne gestire manualmente l'istanziazione.
+ */
 @RestController
 @CrossOrigin
 public class ControllerRecensione {
+
     @Autowired
     PuntoVenditaRepository puntoVenditaRepository;
     @Autowired
     RecensioneRepository recensioneRepository;
 
+    /**
+     * Restituisce una lista di tutte le recensioni presenti nel sistema.
+     *
+     * @return una lista di oggetti Recensione
+     */
     @GetMapping("/getRecensioni")
     public List<Recensione> vediRecensioni(){
-
         return (List<Recensione>) recensioneRepository.findAll();
     }
 
+    /**
+     * Aggiunge una nuova recensione al sistema.
+     *
+     * @param recensione l'oggetto Recensione da aggiungere
+     * @return un messaggio di conferma
+     */
     @PostMapping("/insertRecensione")
     public String addRecensione(@RequestBody Recensione recensione){
         recensioneRepository.save(recensione);
         return "Recensione aggiunta con successo!";
     }
 
+    /**
+     * Elimina una recensione dal sistema.
+     *
+     * @param id l'ID della recensione da eliminare
+     * @return true se l'eliminazione è avvenuta con successo, false altrimenti
+     */
     @DeleteMapping("/deleteRecensione/{id}")
     public boolean deleteRecensione(@PathVariable int id){
         if(recensioneRepository.existsById(id))
@@ -47,29 +80,34 @@ public class ControllerRecensione {
         return false;
     }
 
+    /**
+     * Modifica una recensione esistente nel sistema.
+     *
+     * @param recensione l'oggetto Recensione modificato
+     * @return true se la modifica è avvenuta con successo, false altrimenti
+     */
     @PutMapping("/modifyRecensione")
     public boolean modifyRecensione(@RequestBody Recensione recensione){
         recensioneRepository.save(recensione);
         return true;
     }
 
+    /**
+     * Calcola la media dei voti delle recensioni per un dato punto vendita.
+     *
+     * @param id l'ID del punto vendita
+     * @return la media dei voti come un numero decimale
+     */
     @GetMapping("/getPuntoVenditaMedia/{id}")
     public Double getMediaVotiByPuntoVendita(@PathVariable int id) {
-
         PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get();
-        List <Recensione> listaRecensioni = recensioneRepository.findByPuntoVendita(puntoVendita);
+        List<Recensione> listaRecensioni = recensioneRepository.findByPuntoVendita(puntoVendita);
         int sommaVoti = 0;
         for (Recensione r : listaRecensioni) {
-           sommaVoti += r.getVoto();
+            sommaVoti += r.getVoto();
+        }
+        double mediaVoti = (double) sommaVoti / listaRecensioni.size();
+        return mediaVoti;
     }
-
-double mediaVoti = (double) sommaVoti / listaRecensioni.size();
-        //List<Integer> votiRecensioni
-
-    return mediaVoti;
 }
 
-
-    
-    
-}
