@@ -75,7 +75,7 @@ private List<Client> clienti;
 @JsonIgnore
 private Admin admin;
 
-@OneToMany
+@OneToMany(mappedBy = "puntoVendita")
 @JsonIgnore
 private List<Dipendente> listaDipendenti;
 

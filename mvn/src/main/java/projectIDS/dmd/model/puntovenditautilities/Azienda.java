@@ -4,7 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import projectIDS.dmd.model.persone.TitolareAzienda;
 
 /**
  * Rappresenta un'azienda nel sistema.
@@ -32,6 +34,9 @@ public class Azienda {
     
     private String localitaAzienda;
     
+    @ManyToOne
+    private TitolareAzienda titolareAzienda;
+
 /**
  * Restituisce l'ID dell'azienda.
  *

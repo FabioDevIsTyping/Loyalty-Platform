@@ -56,8 +56,9 @@ public class Dipendente {
      * Il punto vendita di appartenenza del dipendente.
      */
     @ManyToOne
-    @JoinColumn(name="puntoVendita_id")
+    @JoinColumn(name = "puntoVendita_id")
     private PuntoVendita puntoVendita;
+    
 
     // /**
     //  * L'admin associato al dipendente.

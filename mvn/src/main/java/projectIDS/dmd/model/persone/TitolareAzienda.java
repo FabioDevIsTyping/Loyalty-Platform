@@ -46,7 +46,7 @@ public class TitolareAzienda {
     /**
      * Le aziende di cui è titolare il titolare di azienda.
      */
-    @OneToMany
+    @OneToMany(mappedBy = "titolareAzienda")
     private List<Azienda> aziende;
 
     /**
