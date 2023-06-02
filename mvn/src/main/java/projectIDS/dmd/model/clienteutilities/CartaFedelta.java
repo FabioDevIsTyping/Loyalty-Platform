@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
@@ -59,6 +61,7 @@ public class CartaFedelta {
      */
     @ManyToOne
     @JoinColumn(name = "portafoglio_id")
+    @JsonIgnore
     private PortafoglioCliente portafoglioCliente;
 
     /**

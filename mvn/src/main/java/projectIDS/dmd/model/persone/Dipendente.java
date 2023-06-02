@@ -2,16 +2,13 @@ package projectIDS.dmd.model.persone;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 
@@ -60,15 +57,14 @@ public class Dipendente {
      */
     @ManyToOne
     @JoinColumn(name="puntoVendita_id")
-    @JsonIgnore
     private PuntoVendita puntoVendita;
 
-    /**
-     * L'admin associato al dipendente.
-     */
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "admin_id", referencedColumnName = "id")
-    private Admin admin;
+    // /**
+    //  * L'admin associato al dipendente.
+    //  */
+    // @OneToOne(cascade = CascadeType.MERGE)
+    // @JoinColumn(name = "admin_id", referencedColumnName = "id")
+    // private Admin admin;
 
     /**
      * Restituisce l'identificatore del dipendente.
@@ -241,23 +237,23 @@ public class Dipendente {
         this.numeroTelefonico = numeroTelefonico;
     }
 
-    /**
-     * Restituisce l'admin associato al dipendente.
-     * 
-     * @return l'admin associato al dipendente
-     */
-    public Admin getAdmin() {
-        return admin;
-    }
+//     /**
+//      * Restituisce l'admin associato al dipendente.
+//      * 
+//      * @return l'admin associato al dipendente
+//      */
+//     public Admin getAdmin() {
+//         return admin;
+//     }
 
-    /**
-     * Imposta l'admin associato al dipendente.
-     * 
-     * @param admin l'admin associato al dipendente da impostare
-     */
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
-}
+//     /**
+//      * Imposta l'admin associato al dipendente.
+//      * 
+//      * @param admin l'admin associato al dipendente da impostare
+//      */
+//     public void setAdmin(Admin admin) {
+//         this.admin = admin;
+//     }
+ }
 
 

@@ -2,13 +2,16 @@ package projectIDS.dmd.model.persone;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import projectIDS.dmd.model.clienteutilities.CartaFedelta;
 import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 
 
@@ -49,6 +52,10 @@ public class Client {
 
     @ManyToMany
     private List<PuntoVendita> puntiVendita;
+
+    @OneToMany(mappedBy = "client")
+    @JsonIgnore
+    private List<CartaFedelta> listaCarte;
 
     /**
      * Restituisce l'ID di questo cliente.
@@ -184,5 +191,15 @@ public class Client {
     public void setPuntiVendita(List<PuntoVendita> puntiVendita) {
         this.puntiVendita = puntiVendita;
     }
+
+    public List<CartaFedelta> getListaCarte() {
+        return listaCarte;
+    }
+
+    public void setListaCarte(List<CartaFedelta> listaCarte) {
+        this.listaCarte = listaCarte;
+    }
+
+    
 }
 

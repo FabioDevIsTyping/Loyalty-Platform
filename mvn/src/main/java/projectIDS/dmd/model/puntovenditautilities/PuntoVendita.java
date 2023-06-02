@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -17,9 +18,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import projectIDS.dmd.model.clienteutilities.CartaFedelta;
+import projectIDS.dmd.model.persone.Admin;
 import projectIDS.dmd.model.persone.Client;
+import projectIDS.dmd.model.persone.Dipendente;
 
 /**
  * Rappresenta un punto vendita nel sistema.
@@ -49,6 +53,7 @@ public class PuntoVendita {
 private int id;
 private String localita;
 private String nomePuntoVendita;
+
 @ManyToOne(fetch = FetchType.EAGER)
 @JoinColumn(name = "azienda_id")
 @OnDelete(action = OnDeleteAction.CASCADE)
@@ -58,6 +63,7 @@ public Azienda azienda;
 private List<ProgrammaFedelta> programmaFedelta;
 
 @OneToMany(mappedBy = "puntoVendita")
+@JsonIgnore
 private List<CartaFedelta> carteFedelta;
 
 
@@ -65,6 +71,13 @@ private List<CartaFedelta> carteFedelta;
 @JsonIgnore
 private List<Client> clienti;
 
+@OneToOne(mappedBy = "puntoVendita", cascade = CascadeType.MERGE)
+@JsonIgnore
+private Admin admin;
+
+@OneToMany
+@JsonIgnore
+private List<Dipendente> listaDipendenti;
 
 
 /**
@@ -182,6 +195,22 @@ public List<ProgrammaFedelta> getProgrammaFedelta() {
  */
 public void setProgrammaFedelta(List<ProgrammaFedelta> programmaFedelta) {
     this.programmaFedelta = programmaFedelta;
+}
+
+public Admin getAdmin() {
+    return admin;
+}
+
+public void setAdmin(Admin admin) {
+    this.admin = admin;
+}
+
+public List<Dipendente> getListaDipendenti() {
+    return listaDipendenti;
+}
+
+public void setListaDipendenti(List<Dipendente> listaDipendenti) {
+    this.listaDipendenti = listaDipendenti;
 }
 
 

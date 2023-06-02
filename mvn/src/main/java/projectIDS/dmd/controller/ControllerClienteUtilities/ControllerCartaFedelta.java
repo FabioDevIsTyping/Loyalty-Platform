@@ -19,8 +19,7 @@ import projectIDS.dmd.repository.PersoneRepository.ClientRepository;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+
 
 
 /**
@@ -56,8 +55,7 @@ public class ControllerCartaFedelta {
      */
     @GetMapping("/getCarteFedelta")
     public List<CartaFedelta> vediCarte(){
-        return StreamSupport.stream(cartaFedeltaRepository.findAll().spliterator(), false)
-                            .collect(Collectors.toList());
+        return cartaFedeltaRepository.findAll();
     }
 
     /**
