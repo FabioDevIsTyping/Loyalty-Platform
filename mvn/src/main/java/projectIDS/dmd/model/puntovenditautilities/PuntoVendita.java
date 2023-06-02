@@ -53,12 +53,11 @@ private String nomePuntoVendita;
 @JoinColumn(name = "azienda_id")
 @OnDelete(action = OnDeleteAction.CASCADE)
 public Azienda azienda;
-@ManyToOne
-@JoinColumn(name = "programmaFedelta_id")
-private ProgrammaFedelta programmaFedelta;
+
+@ManyToMany
+private List<ProgrammaFedelta> programmaFedelta;
 
 @OneToMany(mappedBy = "puntoVendita")
-@JsonIgnore
 private List<CartaFedelta> carteFedelta;
 
 
@@ -172,7 +171,7 @@ public void setCarteFedelta(List<CartaFedelta> carteFedelta) {
  *
  * @return il ProgrammaFedelta associato a questo PuntoVendita
  */
-public ProgrammaFedelta getProgrammaFedelta() {
+public List<ProgrammaFedelta> getProgrammaFedelta() {
     return programmaFedelta;
 }
 
@@ -181,7 +180,7 @@ public ProgrammaFedelta getProgrammaFedelta() {
  *
  * @param programmaFedelta il nuovo ProgrammaFedelta associato a questo PuntoVendita
  */
-public void setProgrammaFedelta(ProgrammaFedelta programmaFedelta) {
+public void setProgrammaFedelta(List<ProgrammaFedelta> programmaFedelta) {
     this.programmaFedelta = programmaFedelta;
 }
 

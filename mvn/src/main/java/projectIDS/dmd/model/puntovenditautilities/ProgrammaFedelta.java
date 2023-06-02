@@ -1,5 +1,7 @@
 package projectIDS.dmd.model.puntovenditautilities;
 
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +30,8 @@ public class ProgrammaFedelta {
     private int id;
 
     private String nomeProgramma;
+
+
 
     
 
@@ -58,6 +62,8 @@ public class ProgrammaFedelta {
     public void setNomeProgramma(String newNome) {
         this.nomeProgramma = newNome;
     }
+
+
 
 
 }

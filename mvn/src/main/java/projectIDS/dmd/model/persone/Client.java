@@ -2,7 +2,6 @@ package projectIDS.dmd.model.persone;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,7 +48,6 @@ public class Client {
     private String numeroTelefonico;
 
     @ManyToMany
-    @JsonIgnore
     private List<PuntoVendita> puntiVendita;
 
     /**

@@ -71,10 +71,11 @@ public class ControllerPuntoVendita {
      * @return un messaggio di conferma
      */
     @PostMapping("/insertPuntoVendita")
-    public String addPuntoVendita(@RequestBody PuntoVendita negozio){
-        puntoVenditaRepository.save(negozio);
-        return "Punto vendita aggiunto con successo!";
-    }
+public String addPuntoVendita(@RequestBody PuntoVendita negozio) {
+    puntoVenditaRepository.save(negozio);
+    return "Punto vendita aggiunto con successo!";
+}
+
 
     /**
      * Elimina un punto vendita dal sistema utilizzando l'ID.

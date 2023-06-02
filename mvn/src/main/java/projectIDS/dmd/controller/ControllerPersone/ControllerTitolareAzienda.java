@@ -51,7 +51,7 @@ public class ControllerTitolareAzienda {
      *
      * @return una lista di tutti i titolari azienda.
      */
-    @GetMapping("/getTitolareAzienda")
+    @GetMapping("/getTitolariAzienda")
     public List<TitolareAzienda> vediTitolareAzienda(){
         return (List<TitolareAzienda>) titolareAziendaRepository.findAll();
     }
