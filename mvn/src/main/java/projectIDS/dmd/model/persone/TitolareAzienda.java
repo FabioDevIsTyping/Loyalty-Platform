@@ -2,6 +2,8 @@ package projectIDS.dmd.model.persone;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -47,6 +49,7 @@ public class TitolareAzienda {
      * Le aziende di cui è titolare il titolare di azienda.
      */
     @OneToMany(mappedBy = "titolareAzienda")
+    @JsonIgnore
     private List<Azienda> aziende;
 
     /**
