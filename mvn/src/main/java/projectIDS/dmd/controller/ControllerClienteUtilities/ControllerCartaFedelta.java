@@ -180,6 +180,33 @@ public List<CartaFedelta> getCarteFedeltaByClientAndPuntoVendita(@PathVariable i
 }
 
 
+/**
+ * Aggiorna il saldo cashback di una carta fedeltà.
+ *
+ * @param idCarta  L'ID della carta fedeltà da aggiornare.
+ * @param importo  L'importo da sottrarre al saldo cashback.
+ * @return Una stringa di errore se l'importo è maggiore del saldo cashback attuale, altrimenti null.
+ */
+@PutMapping("/updateSaldoCashback/{idCarta}/{importo}")
+public String updateSaldoCashback(@PathVariable int idCarta, @PathVariable double importo) {
+    CartaFedelta carta = cartaFedeltaRepository.findById(idCarta).orElse(null);
+    if (carta == null) {
+        return "Carta fedeltà non trovata";
+    }
+
+    double saldoCashback = carta.getPercentualeCashback();
+    if (importo > saldoCashback) {
+        return "Errore: l'importo è maggiore del saldo cashback attuale";
+    }
+
+    double nuovoSaldoCashback = saldoCashback - importo;
+    carta.setPercentualeCashback(nuovoSaldoCashback);
+    cartaFedeltaRepository.save(carta);
+
+    return "Cashback aggiornato con successo";
+}
+
+
 
 }
 
