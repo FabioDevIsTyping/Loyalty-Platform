@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import projectIDS.dmd.model.clienteutilities.CartaFedelta;
 import projectIDS.dmd.model.persone.Client;
+import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 
 /**
  * CartaFedeltaRepository è un'interfaccia che estende JpaRepository<CartaFedelta, Integer>,
@@ -21,5 +22,6 @@ public interface CartaFedeltaRepository extends JpaRepository<CartaFedelta, Inte
      * @return Una lista di oggetti CartaFedelta associati al cliente specificato.
      */
     List<CartaFedelta> findByClient(Client client);
+    List<CartaFedelta> findByClientAndPuntoVendita(Client client, PuntoVendita puntoVendita);
 }
 

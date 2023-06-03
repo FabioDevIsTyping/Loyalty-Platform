@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import projectIDS.dmd.model.clienteutilities.CartaFedelta;
 import projectIDS.dmd.model.clienteutilities.PortafoglioCliente;
+import projectIDS.dmd.model.persone.Client;
+import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 import projectIDS.dmd.repository.ClienteUtilitiesRepository.CartaFedeltaRepository;
 import projectIDS.dmd.repository.ClienteUtilitiesRepository.PortafoglioClienteRepository;
 import projectIDS.dmd.repository.PersoneRepository.ClientRepository;
+import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRepository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -47,6 +51,8 @@ public class ControllerCartaFedelta {
     ClientRepository clientRepository;
     @Autowired
     PortafoglioClienteRepository portafoglioClienteRepository;
+    @Autowired
+    PuntoVenditaRepository puntoVenditaRepository;
 
     /**
      * Restituisce una lista di tutte le carte fedeltà presenti nel sistema.
@@ -133,5 +139,47 @@ public class ControllerCartaFedelta {
         cartaFedeltaRepository.save(carta);
         return true;
     }
+
+/**
+ * Recupera una lista di CartaFedelta associate a un cliente specifico.
+ *
+ * @param id L'ID del cliente.
+ * @return La lista di CartaFedelta associate al cliente. Se il cliente non viene trovato, viene restituita una lista vuota.
+ */
+@GetMapping("/getCarteFedeltaByClient/{id}")
+public List<CartaFedelta> getCarteFedeltaByClient(@PathVariable int id){
+    Client client = clientRepository.findById(id).get();
+    if(client == null)
+    {
+        return Collections.emptyList();
+    }
+    List<CartaFedelta> listaCarte = cartaFedeltaRepository.findByClient(client);
+
+    return listaCarte;
+}
+
+/**
+ * Recupera una lista di CartaFedelta associate a un cliente specifico e a un determinato punto vendita.
+ *
+ * @param clientId L'ID del cliente.
+ * @param puntoVenditaId L'ID del punto vendita.
+ * @return La lista di CartaFedelta associate al cliente e al punto vendita. Se il cliente o il punto vendita non vengono trovati, viene restituita una lista vuota.
+ */
+@GetMapping("/getCarteFedeltaByClientAndPuntoVendita/{clientId}/{puntoVenditaId}")
+public List<CartaFedelta> getCarteFedeltaByClientAndPuntoVendita(@PathVariable int clientId, @PathVariable int puntoVenditaId){
+    Client client = clientRepository.findById(clientId).get();
+    PuntoVendita puntoVendita = puntoVenditaRepository.findById(puntoVenditaId).get();
+
+    if(client == null || puntoVendita == null) {
+        return Collections.emptyList();
+    }
+
+    List<CartaFedelta> listaCarte = cartaFedeltaRepository.findByClientAndPuntoVendita(client, puntoVendita);
+
+    return listaCarte;
+}
+
+
+
 }
 
