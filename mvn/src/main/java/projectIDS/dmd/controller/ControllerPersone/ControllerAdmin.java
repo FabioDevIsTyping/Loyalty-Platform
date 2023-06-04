@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import projectIDS.dmd.model.persone.Admin;
+import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 import projectIDS.dmd.repository.PersoneRepository.AdminRepository;
+import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,6 +40,8 @@ import java.util.List;
 public class ControllerAdmin {
     @Autowired
     AdminRepository adminRepository;
+    @Autowired 
+    PuntoVenditaRepository puntoVenditaRepository;
 
     /**
      * Restituisce una lista di tutti gli amministratori.
@@ -47,7 +52,29 @@ public class ControllerAdmin {
     public List<Admin> vediAdmin(){
         return (List<Admin>) adminRepository.findAll();
     }
-    
+
+/**
+ * Recupera una lista di amministratori associati a un punto vendita specifico mediante l'ID.
+ *
+ * @param id L'ID del punto vendita.
+ * @return Una lista di amministratori associati al punto vendita specificato.
+ */
+@GetMapping("/getAdminByPuntoVendita/{id}")
+public List<Admin> getAdminByPuntoVendita(@PathVariable int id) {
+    // Ottieni il punto vendita dal repository dei punti vendita utilizzando l'ID fornito
+    PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get();
+
+    if (puntoVendita == null) {
+        // Punto vendita non trovato, ritorno lista vuota
+        return Collections.emptyList();
+    }
+
+    // Ottieni la lista di amministratori appartenenti al punto vendita
+    List<Admin> adminPuntiVendita = adminRepository.findByPuntoVendita(puntoVendita);
+    return adminPuntiVendita;
+}
+
+
     /**
      * Aggiunge un nuovo amministratore.
      *
@@ -87,5 +114,6 @@ public class ControllerAdmin {
         adminRepository.save(admin);
         return true;
     }
+
 }
 
