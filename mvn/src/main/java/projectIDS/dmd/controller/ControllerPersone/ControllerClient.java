@@ -109,7 +109,7 @@ public class ControllerClient {
      * 
      * @return una lista di clienti appartenenti al punto vendita.
      */
-    @GetMapping("/getClienti/{id}")
+    @GetMapping("/getClientiByPuntoVendita/{id}")
     public List<Client> vediClientiPuntoVendita(@PathVariable int id) {
         // Ottieni il punto vendita dal repository dei punti vendita utilizzando l'ID
         // fornito
