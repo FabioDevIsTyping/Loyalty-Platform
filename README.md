@@ -52,7 +52,7 @@ Il cliente può accedere alle informazioni su tutte le proprie carte fedeltà al
 
 ## Documentation
 
-[Documentation](https://github.com/FabioDevIsTyping/IdS-2022-DeVitis-Caggiano)
+[Traccia progetto](https://drive.google.com/file/d/1fg07QJtRkYNSld_a-8ilBbCiUFEAGIMJ/view)
 
 
 
@@ -60,91 +60,167 @@ Il cliente può accedere alle informazioni su tutte le proprie carte fedeltà al
 ## API Reference
 
 
-#### Clienti
+#### Titolare Azienda
 
-- Inserisce un cliente all'interno della piattaforma.
+- Inserisce un titolare Azienda all'interno della piattaforma.
 ```http
-  POST /localhost:8080/insertClient
+  POST localhost:8080/insertTitolareAzienda
 ```
-
-- Ritorna la lista di tutti i clienti della piattaforma.
-
+- Ritorna la lista di tutti i titolari azienda all'interno della piattaforma.
 ```http
-  GET /localhost:8080/getClienti
+  GET localhost:8080/getTitolariAzienda
 ```
-
-- Ritorna la lista di tutti i clienti di un determinato punto vendita con id x.
-
+- Cancella un titolare azienda dalla piattaforma fornendo l'id del titolare azienda da cancellare.
 ```http
-  GET localhost:8080/getClienti/{id}
+  DELETE localhost:8080/deleteTitolareAzienda/id
 ```
-- Cancella un determinato cliente dalla piattaforma dato l'id del cliente da cancellare.
+- Modifica un titolare azienda all'interno della piattaforma.
 ```http
-  DELETE localhost:8080/deleteCliente/{id}
+  PUT localhost:8080/modifyTitolareAzienda/id
 ```
-#### Admin
+#### Azienda
+
+- Inserisce un'azienda all'interno della piattaforma.
+```http
+  POST localhost:8080/insertAzienda
+```
+- Ritorna la lista di tutte le aziende all'interno della piattaforma.
+```http
+  GET localhost:8080/getAziende
+```
+- Rimuove una azienda dalla piattaforma fornendo l'id dell'azienda da cancellare.
+```http
+  DELETE localhost:8080/deleteAzienda/id
+```
+- Modifica un azienda all'interno della piattaforma.
+```http
+  PUT localhost:8080/modifyAzienda/id
+```
+#### Punto Vendita 
+
+- Inserisce un punto vendita all'interno della piattaforma.
+```http
+  POST localhost:8080/insertPuntoVendita
+```
+- Ritorna la lista di tutti i punti vendita all'interno della piattaforma.
+```http
+  GET localhost:8080/getPuntiVendita
+```
+- Ritorna la lista di tutti i punti vendita all'interno della piattaforma che appartengono ad una data azienda.
+```http
+  GET localhost:8080/getPuntiVenditaByAzienda/id
+```
+- Rimuove una azienda dalla piattaforma fornendo l'id dell'azienda da cancellare.
+```http
+  DELETE localhost:8080/deleteAzienda/id
+```
+- Modifica un azienda all'interno della piattaforma.
+```http
+  PUT localhost:8080/modifyAzienda/id
+```
+#### Admin 
 
 - Inserisce un admin all'interno della piattaforma.
 ```http
-  POST /localhost:8080/insertClient
+  POST localhost:8080/insertAdmin
 ```
-- Ritorna la lista di tutti gli admin presenti nella piattaforma.
+- Ritorna la lista di tutti gli admin all'interno della piattaforma.
+```http
+  GET localhost:8080/getAdmins
+```
+- Ritorna l'admin di un punto vendita dato l'id del punto vendita.
+```http
+  GET localhost:8080/getAdminByPuntoVendita/1
+```
+- Cancella un admin dalla piattaforma dato l'id dell'admin da cancellare.
+```http
+  DELETE localhost:8080/deleteAdmin/id
+```
+- Modifica un admin all'interno della piattaforma.
+```http
+  PUT localhost:8080/modifyAdmin/id
+```
 
+#### Client
+
+- Inserisce un cliente all'interno della piattaforma.
 ```http
-  GET /localhost:8080/getAdmins 
+  POST localhost:8080/insertClient
 ```
-- Cancella un determinato admin dalla piattaforma dato l'id dell' admin da cancellare.
+- Ritorna la lista di tutti i clienti all'interno della piattaforma.
 ```http
-  DELETE localhost:8080/deleteAdmin/{id}
+  GET localhost:8080/getClienti
 ```
+- Ritorna la lista di tutti i clienti di un dato punto vendita.
+```http
+  GET localhost:8080/getClientiByPuntoVendita/id
+```
+- Cancella un cliente dalla piattaforma dato l'id del cliente da cancellare.
+```http
+  DELETE localhost:8080/deleteClient/id
+```
+- Modifica un cliente all'interno della piattaforma.
+```http
+  PUT localhost:8080/modifyClient/id
+```
+
 #### Dipendente
 
 - Inserisce un dipendente all'interno della piattaforma.
 ```http
-  POST /localhost:8080/insertDipendente
+  POST localhost:8080/insertDipendente
 ```
-- Cambia un dipendente e lo fa diventare admin presso il punto vendita del quale era dipendente.
+- Cambia il dipendente in un admin presso il punto vendita in cui lavora.
 ```http
-  POST /localhost:8080/changeDipendenteToAdmin
-```
-
-- Ritorna la lista di tutti i dipendenti presenti nella piattaforma.
-
-```http
-  GET /localhost:8080/getDipendenti
+  POST localhost:8080/changeDipendenteToAdmin
 ```
 
-- Ritorna la lista di tutti i dipendenti presenti nella piattaforma di un punto vendita x, dato l'id di questo punto vendita.
+- Ritorna la lista di tutti i dipendenti all'interno della piattaforma.
+```http
+  GET localhost:8080/getDipendenti
+```
+- Ritorna la lista di tutti i dipendenti di un dato punto vendita.
+```http
+  GET localhost:8080/getDipendentiByPuntoVendita/id
+```
+- Cancella un dipendente dalla piattaforma dato l'id del dipendente da cancellare.
+```http
+  DELETE localhost:8080/deleteDipendente/id
+```
+- Modifica un dipendente all'interno della piattaforma.
+```http
+  PUT localhost:8080/modifyDipendente/id
+```
+#### Carta Fedeltà
 
+- Inserisce una carta fedeltà all'interno della piattaforma fornendo l'id del cliente.
 ```http
-  GET /localhost:8080/getDipendentiByPuntoVenditaId/{id}
+  POST localhost:8080/insertCartaFedelta/id
 ```
-- Cancella un determinato dipendente dalla piattaforma dato l'id del dipendente da cancellare.
+- Ritorna la lista di tutte le carte fedeltà all'interno della piattaforma.
 ```http
-  DELETE localhost:8080/deleteDipendente/{id}
+  GET localhost:8080/getCarteFedelta
 ```
-#### Titolare Azienda
-- Inserisce un titolare azienda all'interno della piattaforma.
+- Ritorna la lista di tutte le carte fedeltà all'interno della piattaforma associate ad un cliente.
 ```http
-  POST /localhost:8080/insertTitolareAzienda
+  GET localhost:8080/getCarteFedeltaByClient/id
 ```
-- Ritorna la lista di tutti i titolari azienda presenti nella piattaforma.
+- Ritorna la lista di tutte le carte fedeltà all'interno della piattaforma di un cliente presso un punto vendita specifico.
+```http
+  GET localhost:8080/getCarteFedeltaByClientAndPuntoVendita/id/id
+```
 
+- Modifica il saldo cashback di un cliente in seguito alla richiesta di cashback, fornendo id carta e l'importo del cashback richiesto.
 ```http
-  GET /localhost:8080/getTitolareAzienda
+  PUT localhost:8080/updateSaldoCashback/id/importo
 ```
-- Cancella un determinato titolare azienda dalla piattaforma dato l'id del titolare azienda da cancellare.
+- Cancella una carta fedelta dalla piattaforma dato l'id della carta da cancellare.
 ```http
-  DELETE localhost:8080/deleteTitolareAzienda/{id}
+  DELETE localhost:8080/deleteCartaFedelta/2
 ```
-- Ritorna la lista di tutti i dipendenti presenti in uno dei suoi punti vendita.
-
+- Modifica una carta fedelta all'interno della piattaforma.
 ```http
-  GET /localhost:8080/getListaDipendenti
-```
-- Vede la lista dei programmi fedeltà disponibili.
-```http
-  GET /localhost:8080/getListaDipendenti
+  PUT localhost:8080/modifyCartaFedelta/id
 ```
 ## Authors
 
