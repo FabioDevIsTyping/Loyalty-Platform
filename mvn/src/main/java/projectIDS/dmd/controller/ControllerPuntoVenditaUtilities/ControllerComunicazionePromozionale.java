@@ -1,6 +1,7 @@
 package projectIDS.dmd.controller.ControllerPuntoVenditaUtilities;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,35 +21,48 @@ import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.ComunicazionePr
 import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRepository;
 
 /**
- * Questa classe rappresenta il controller per le operazioni relative alle comunicazioni promozionali.
+ * Questa classe rappresenta il controller per le operazioni relative alle
+ * comunicazioni promozionali.
  * 
- * @RestController è un'annotazione in Spring che viene utilizzata per indicare che la classe è un controller,
- * che gestisce le richieste HTTP e restituisce i risultati come risposte HTTP.
- * In sostanza, definisce un endpoint REST che può essere chiamato per eseguire operazioni specifiche.
+ * @RestController è un'annotazione in Spring che viene utilizzata per indicare
+ *                 che la classe è un controller,
+ *                 che gestisce le richieste HTTP e restituisce i risultati come
+ *                 risposte HTTP.
+ *                 In sostanza, definisce un endpoint REST che può essere
+ *                 chiamato per eseguire operazioni specifiche.
  * 
- * @CrossOrigin è un'annotazione che viene utilizzata per consentire le richieste provenienti da domini diversi.
- * Abilitando questa annotazione, il controller accetta richieste provenienti da un dominio diverso da quello in cui è 
- * ospitato il server.
+ * @CrossOrigin è un'annotazione che viene utilizzata per consentire le
+ *              richieste provenienti da domini diversi.
+ *              Abilitando questa annotazione, il controller accetta richieste
+ *              provenienti da un dominio diverso da quello in cui è
+ *              ospitato il server.
  * 
- * @Autowired è un'annotazione di Spring che viene utilizzata per eseguire l'iniezione delle dipendenze. In questo caso,
- * viene utilizzata per iniettare un'istanza di ComunicazionePromozionaleRepository, ClientRepository e 
- * PuntoVenditaRepository nella classe ControllerComunicazionePromozionale. L'iniezione delle dipendenze permette di 
- * utilizzare facilmente i metodi e le funzionalità offerte da ComunicazionePromozionaleRepository, ClientRepository e 
- * PuntoVenditaRepository senza doverne gestire manualmente l'istanziazione.
+ * @Autowired è un'annotazione di Spring che viene utilizzata per eseguire
+ *            l'iniezione delle dipendenze. In questo caso,
+ *            viene utilizzata per iniettare un'istanza di
+ *            ComunicazionePromozionaleRepository, ClientRepository e
+ *            PuntoVenditaRepository nella classe
+ *            ControllerComunicazionePromozionale. L'iniezione delle dipendenze
+ *            permette di
+ *            utilizzare facilmente i metodi e le funzionalità offerte da
+ *            ComunicazionePromozionaleRepository, ClientRepository e
+ *            PuntoVenditaRepository senza doverne gestire manualmente
+ *            l'istanziazione.
  */
 @RestController
 @CrossOrigin
 public class ControllerComunicazionePromozionale {
-    
+
     @Autowired
     ComunicazionePromozionaleRepository comunicazioniPromozionaliRepository;
     @Autowired
     ClientRepository clientRepository;
-    @Autowired 
+    @Autowired
     PuntoVenditaRepository puntoVenditaRepository;
 
     /**
-     * Restituisce una lista di tutte le comunicazioni promozionali presenti nel sistema.
+     * Restituisce una lista di tutte le comunicazioni promozionali presenti nel
+     * sistema.
      *
      * @return una lista di oggetti ComunicazionePromozionale
      */
@@ -56,7 +70,33 @@ public class ControllerComunicazionePromozionale {
     public List<ComunicazionePromozionale> vediMessaggi() {
         return (List<ComunicazionePromozionale>) comunicazioniPromozionaliRepository.findAll();
     }
-    
+
+    /**
+     * Restituisce una lista di comunicazioni promozionali associate a un punto
+     * vendita specifico mediante l'ID del punto vendita.
+     *
+     * @param idPuntoVendita L'ID del punto vendita.
+     * @return Una lista di comunicazioni promozionali associate al punto vendita
+     *         specificato.
+     */
+    @GetMapping("/getComunicazioniByPuntoVendita/{idPuntoVendita}")
+    public List<ComunicazionePromozionale> getComunicazioniByPuntoVendita(@PathVariable int idPuntoVendita) {
+        // Ottieni il punto vendita dal repository dei punti vendita utilizzando l'ID
+        // fornito
+        PuntoVendita puntoVendita = puntoVenditaRepository.findById(idPuntoVendita).get();
+
+        if (puntoVendita == null) {
+            // Punto vendita non trovato, gestisci l'errore come desideri
+            // Ad esempio, restituisci una risposta di errore o una lista vuota
+            return Collections.emptyList();
+        }
+
+        // Ottieni la lista di comunicazioni promozionali associate al punto vendita
+        List<ComunicazionePromozionale> comunicazioniPuntoVendita = comunicazioniPromozionaliRepository
+                .findByPuntoVenditaMittente(puntoVendita);
+        return comunicazioniPuntoVendita;
+    }
+
     /**
      * Aggiunge una nuova comunicazione promozionale al sistema.
      *
@@ -98,26 +138,27 @@ public class ControllerComunicazionePromozionale {
     }
 
     /**
-     * Aggiunge una nuova comunicazione promozionale associata a un punto vendita specifico.
+     * Aggiunge una nuova comunicazione promozionale associata a un punto vendita
+     * specifico.
      *
      * @param comunicazione l'oggetto ComunicazionePromozionale da aggiungere
-     * @param id l'ID del punto vendita associato
+     * @param id            l'ID del punto vendita associato
      * @return un messaggio di conferma
      */
     @PostMapping("/insertComunicazione/{id}")
     public String addMessaggio(@RequestBody ComunicazionePromozionale comunicazione, @PathVariable int id) {
         PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get();
-        
+
         if (puntoVendita != null) {
             comunicazione.setOrarioDiInvio(LocalDateTime.now());
             comunicazione.setPuntoVendita(puntoVendita);
             comunicazione.setClientiDestinatari(clientRepository.findByPuntiVendita(puntoVendita));
-            
+
             comunicazioniPromozionaliRepository.save(comunicazione);
-            
+
             return "Messaggio inviato con successo!";
         }
-        
+
         return "Punto vendita non trovato!";
     }
 }
