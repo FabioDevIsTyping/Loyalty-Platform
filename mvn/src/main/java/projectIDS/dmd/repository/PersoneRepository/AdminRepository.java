@@ -3,6 +3,9 @@ package projectIDS.dmd.repository.PersoneRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import projectIDS.dmd.model.persone.Admin;
+import java.util.List;
+import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
+
 
 /**
  * AdminRepository è un'interfaccia che estende JpaRepository<Admin, Integer>,
@@ -11,4 +14,5 @@ import projectIDS.dmd.model.persone.Admin;
  */
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
+    List<Admin> findByPuntoVendita(PuntoVendita puntoVendita);
 }
