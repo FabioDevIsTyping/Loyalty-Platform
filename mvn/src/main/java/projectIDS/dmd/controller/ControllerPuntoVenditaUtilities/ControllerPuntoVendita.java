@@ -65,15 +65,28 @@ public class ControllerPuntoVendita {
     }
 
     /**
+     * Restituisce una lista di tutti i punti vendita appartenenti a un'azienda specificata.
+     *
+     * @param idAzienda l'ID dell'azienda di cui si vogliono ottenere i punti vendita
+     * @return una lista di oggetti PuntoVendita appartenenti all'azienda specificata
+     */
+     @GetMapping("/getPuntiVenditaByAzienda/{idAzienda}")
+     public List<PuntoVendita> getPuntiVenditaByAzienda(@PathVariable int idAzienda) {
+    
+     return puntoVenditaRepository.findByAziendaId(idAzienda);
+}
+
+
+    /**
      * Aggiunge un nuovo punto vendita al sistema.
      *
      * @param negozio l'oggetto PuntoVendita da aggiungere
      * @return un messaggio di conferma
      */
-    @PostMapping("/insertPuntoVendita")
-public String addPuntoVendita(@RequestBody PuntoVendita negozio) {
-    puntoVenditaRepository.save(negozio);
-    return "Punto vendita aggiunto con successo!";
+     @PostMapping("/insertPuntoVendita")
+     public String addPuntoVendita(@RequestBody PuntoVendita negozio) {
+     puntoVenditaRepository.save(negozio);
+     return "Punto vendita aggiunto con successo!";
 }
 
 

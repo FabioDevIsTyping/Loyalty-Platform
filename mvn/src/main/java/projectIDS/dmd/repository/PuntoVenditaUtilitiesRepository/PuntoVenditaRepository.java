@@ -1,5 +1,7 @@
 package projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
@@ -10,6 +12,7 @@ import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
  * Fornisce operazioni di accesso ai dati per gestire gli oggetti PuntoVendita.
  */
 public interface PuntoVenditaRepository extends JpaRepository<PuntoVendita, Integer> {
+    List<PuntoVendita> findByAziendaId(int idAzienda);
 
 }
 
