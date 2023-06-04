@@ -15,6 +15,7 @@ import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 import projectIDS.dmd.repository.ClienteUtilitiesRepository.RecensioneRepository;
 import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -51,6 +52,28 @@ public class ControllerRecensione {
     public List<Recensione> vediRecensioni(){
         return (List<Recensione>) recensioneRepository.findAll();
     }
+
+    /**
+ * Recupera le recensioni associate a un punto vendita specifico mediante l'ID del punto vendita.
+ *
+ * @param idPuntoVendita L'ID del punto vendita.
+ * @return Una lista di recensioni associate al punto vendita specificato.
+ */
+@GetMapping("/getRecensioniByPuntoVendita/{idPuntoVendita}")
+public List<Recensione> getRecensioniByPuntoVendita(@PathVariable int idPuntoVendita) {
+    // Ottieni il punto vendita dal repository dei punti vendita utilizzando l'ID fornito
+    PuntoVendita puntoVendita = puntoVenditaRepository.findById(idPuntoVendita).get();
+
+    if (puntoVendita == null) {
+        // Punto vendita non trovato, restituisco una lista vuota
+        return Collections.emptyList();
+    }
+
+    // Ottieni la lista di recensioni associate al punto vendita
+    List<Recensione> recensioniPuntoVendita = recensioneRepository.findByPuntoVendita(puntoVendita);
+    return recensioniPuntoVendita;
+}
+
 
     /**
      * Aggiunge una nuova recensione al sistema.
