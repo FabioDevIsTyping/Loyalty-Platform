@@ -146,7 +146,7 @@ public class ControllerComunicazionePromozionale {
      * @return un messaggio di conferma
      */
     @PostMapping("/insertComunicazione/{id}")
-    public String addMessaggio(@RequestBody ComunicazionePromozionale comunicazione, @PathVariable int id) {
+    public String insertComunicazionePuntoVendita(@RequestBody ComunicazionePromozionale comunicazione, @PathVariable int id) {
         PuntoVendita puntoVendita = puntoVenditaRepository.findById(id).get();
 
         if (puntoVendita != null) {

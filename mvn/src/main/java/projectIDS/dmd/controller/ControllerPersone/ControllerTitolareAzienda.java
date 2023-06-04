@@ -102,8 +102,8 @@ public class ControllerTitolareAzienda {
      * @return una lista di tutti i dipendenti.
      */
     @GetMapping("/getListaDipendenti")
-    public List<Dipendente> getDipendenti() {
-        return controllerDipendente.vediDipendenti();
+    public List<Dipendente> getDipendenti(@PathVariable int id) {
+        return controllerDipendente.getDipendentiByPuntoVenditaId(id);
     }
 
     /**
