@@ -57,6 +57,8 @@ public class Client {
     @JsonIgnore
     private List<CartaFedelta> listaCarte;
 
+    
+
     /**
      * Restituisce l'ID di questo cliente.
      * 

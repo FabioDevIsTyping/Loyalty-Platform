@@ -21,5 +21,6 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
      * @return Una lista di oggetti Client associati al punto vendita specificato.
      */
     List<Client> findByPuntiVendita(PuntoVendita puntoVendita);
+
 }
 

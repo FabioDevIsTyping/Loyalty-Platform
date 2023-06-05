@@ -21,6 +21,8 @@ public interface AcquistoRepository extends JpaRepository<Acquisto, Integer> {
      * @return Una lista di oggetti Acquisto associati al cliente specificato.
      */
     List<Acquisto> findByClient(Client client);
+
+
 }
 
 

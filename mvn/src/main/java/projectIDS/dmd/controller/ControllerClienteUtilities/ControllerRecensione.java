@@ -43,6 +43,7 @@ public class ControllerRecensione {
     @Autowired
     RecensioneRepository recensioneRepository;
 
+
     /**
      * Restituisce una lista di tutte le recensioni presenti nel sistema.
      *
@@ -86,6 +87,8 @@ public List<Recensione> getRecensioniByPuntoVendita(@PathVariable int idPuntoVen
         recensioneRepository.save(recensione);
         return "Recensione aggiunta con successo!";
     }
+
+ 
 
     /**
      * Elimina una recensione dal sistema.
