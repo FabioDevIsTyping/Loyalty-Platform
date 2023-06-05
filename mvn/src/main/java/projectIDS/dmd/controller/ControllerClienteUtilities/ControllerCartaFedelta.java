@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projectIDS.dmd.model.clienteutilities.CartaFedelta;
 import projectIDS.dmd.model.clienteutilities.PortafoglioCliente;
 import projectIDS.dmd.model.persone.Client;
+import projectIDS.dmd.model.puntovenditautilities.ProgrammaFedelta;
 import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 import projectIDS.dmd.repository.ClienteUtilitiesRepository.CartaFedeltaRepository;
 import projectIDS.dmd.repository.ClienteUtilitiesRepository.PortafoglioClienteRepository;
@@ -194,17 +195,27 @@ public String updateSaldoCashback(@PathVariable int idCarta, @PathVariable doubl
         return "Carta fedeltà non trovata";
     }
 
-    double saldoCashback = carta.getPercentualeCashback();
-    if (importo > saldoCashback) {
-        return "Errore: l'importo è maggiore del saldo cashback attuale";
+    ProgrammaFedelta programmaFedelta = carta.getProgrammaFedelta();
+    if (programmaFedelta == null) {
+        return "Programma fedeltà non trovato";
     }
 
-    double nuovoSaldoCashback = saldoCashback - importo;
-    carta.setPercentualeCashback(nuovoSaldoCashback);
-    cartaFedeltaRepository.save(carta);
+    if (programmaFedelta.getId() == 4) {
+        double saldoCashback = carta.getPercentualeCashback();
+        if (importo > saldoCashback) {
+            return "Errore: l'importo è maggiore del saldo cashback attuale";
+        }
 
-    return "Cashback aggiornato con successo";
+        double nuovoSaldoCashback = saldoCashback - importo;
+        carta.setPercentualeCashback(nuovoSaldoCashback);
+        cartaFedeltaRepository.save(carta);
+
+        return "Cashback aggiornato con successo";
+    } else {
+        return "Il programma fedeltà associato a questa carta non è un programma cashback";
+    }
 }
+
 
 
 

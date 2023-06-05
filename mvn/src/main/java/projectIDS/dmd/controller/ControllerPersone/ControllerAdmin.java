@@ -82,10 +82,21 @@ public List<Admin> getAdminByPuntoVendita(@PathVariable int id) {
      * @return un messaggio di conferma dell'aggiunta.
      */
     @PostMapping("/insertAdmin")
-    public String addAdmin(@RequestBody Admin admin){
+    public String addAdmin(@RequestBody Admin admin) {
+        // Controlla se esiste già un amministratore per il punto vendita specificato
+        List<Admin> existingAdmins = adminRepository.findByPuntoVendita(admin.getPuntoVendita());
+    
+        // Se esiste almeno un amministratore per lo stesso punto vendita, ritorna un errore
+        if (!existingAdmins.isEmpty()) {
+            return "Errore: l'amministratore per questo punto vendita esiste già!";
+        }
+    
+        // Altrimenti, salva l'amministratore nel repository
         adminRepository.save(admin);
         return "Admin aggiunto con successo!";
     }
+    
+    
 
     /**
      * Elimina un amministratore dato l'ID.

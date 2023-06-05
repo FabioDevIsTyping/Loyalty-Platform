@@ -52,7 +52,7 @@ public class ControllerAcquisto {
      * @return una lista di oggetti Acquisto
      */
     @GetMapping("/getPurchases")
-    public List<Acquisto> vediAcquisto(){
+    public List<Acquisto> getAcquisti(){
         return (List<Acquisto>) acquistoRepository.findAll();
     }
 
