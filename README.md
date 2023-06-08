@@ -260,4 +260,13 @@ Più tutte le api per operazioni crud e get specifiche.
 
 - [@Fabio De Vitis Michele](https://github.com/FabioDevIsTyping)
 - [@Matteo Caggiano](https://github.com/caggicaggi)
-
+## Strumenti utilizzati per il progetto
+Per il progetto sono stati utilizzati:
+- Spring Boot: Spring Boot è un framework open-source per lo sviluppo di applicazioni Java che semplifica notevolmente la creazione di applicazioni stand-alone e di servizi web. 
+- Maven : Maven è una potente e popolare strumento di gestione delle dipendenze e di automazione del progetto per lo sviluppo di software Java. È un framework basato su plugin che semplifica notevolmente la gestione delle librerie esterne, la compilazione del codice, i test, il packaging e la distribuzione dell'applicazione.
+- Visual Studio Code: Visual Studio Code è un editor di codice sorgente gratuito e altamente personalizzabile sviluppato da Microsoft. È un'applicazione leggera, multi-piattaforma e open-source che supporta numerosi linguaggi di programmazione ed è ampiamente utilizzata dagli sviluppatori per scrivere e debuggare il codice.
+- Wampp server: 
+WAMPP (Windows, Apache, MySQL, PHP, Perl) Server è un pacchetto di software che combina alcuni dei componenti essenziali per lo sviluppo e l'esecuzione di applicazioni web su un sistema Windows.
+- Visual Paradigm: Visual Paradigm è un software di modellazione e progettazione visuale che supporta diverse metodologie e notazioni per la creazione di diagrammi e modelli. È ampiamente utilizzato nell'ambito dello sviluppo software e dell'ingegneria dei requisiti per visualizzare e comunicare in modo chiaro e strutturato l'architettura, il flusso di lavoro e i requisiti di un sistema o di un'applicazione.
+- Postman: come frontend simulato. 
+Postman è una popolare piattaforma di sviluppo di API che consente agli sviluppatori di creare, testare, documentare e condividere facilmente le API. È uno strumento versatile e potente utilizzato per semplificare il processo di sviluppo e integrazione delle API.
