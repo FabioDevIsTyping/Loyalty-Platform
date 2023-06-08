@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import projectIDS.dmd.model.clienteutilities.Acquisto;
 import projectIDS.dmd.model.persone.Client;
+import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
 
 /**
  * AcquistoRepository è un'interfaccia che estende JpaRepository<Acquisto, Integer>,
@@ -21,6 +22,7 @@ public interface AcquistoRepository extends JpaRepository<Acquisto, Integer> {
      * @return Una lista di oggetti Acquisto associati al cliente specificato.
      */
     List<Acquisto> findByClient(Client client);
+    List<Acquisto> findByClientAndPuntoVendita(Client client, PuntoVendita puntoVendita);
 
 
 }

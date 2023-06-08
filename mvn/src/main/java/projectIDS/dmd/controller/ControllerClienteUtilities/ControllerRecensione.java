@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import projectIDS.dmd.model.clienteutilities.Acquisto;
 import projectIDS.dmd.model.clienteutilities.Recensione;
+import projectIDS.dmd.model.persone.Client;
 import projectIDS.dmd.model.puntovenditautilities.PuntoVendita;
+import projectIDS.dmd.repository.ClienteUtilitiesRepository.AcquistoRepository;
 import projectIDS.dmd.repository.ClienteUtilitiesRepository.RecensioneRepository;
+import projectIDS.dmd.repository.PersoneRepository.ClientRepository;
 import projectIDS.dmd.repository.PuntoVenditaUtilitiesRepository.PuntoVenditaRepository;
 
 import java.util.Collections;
 import java.util.List;
+
 
 /**
  * Questa classe rappresenta il controller per le operazioni relative alle recensioni.
@@ -42,6 +47,11 @@ public class ControllerRecensione {
     PuntoVenditaRepository puntoVenditaRepository;
     @Autowired
     RecensioneRepository recensioneRepository;
+    @Autowired
+    AcquistoRepository acquistoRepository;
+    @Autowired 
+    ClientRepository clientRepository;
+
 
 
     /**
@@ -87,6 +97,49 @@ public List<Recensione> getRecensioniByPuntoVendita(@PathVariable int idPuntoVen
         recensioneRepository.save(recensione);
         return "Recensione aggiunta con successo!";
     }
+
+/**
+ * Inserisce una recensione se il cliente specificato ha effettuato almeno un acquisto presso il punto vendita specificato.
+ *
+ * @param recensione l'oggetto Recensione contenente i dettagli della recensione da inserire
+ * @return una stringa indicante l'esito dell'operazione di inserimento della recensione
+ * @throws IllegalArgumentException se il cliente o il punto vendita specificati non esistono
+ */
+@PostMapping("/insertRecensioneIfCliente")
+public String insertRecensioneIfCliente(@RequestBody Recensione recensione) {
+    Client client = clientRepository.findById(recensione.getCliente().getId())
+            .orElseThrow(() -> new IllegalArgumentException("Il cliente specificato non esiste."));
+
+    PuntoVendita puntoVendita = puntoVenditaRepository.findById(recensione.getPuntoVendita().getId())
+            .orElseThrow(() -> new IllegalArgumentException("Il punto vendita specificato non esiste."));
+
+
+    // Verifica se il cliente ha effettuato almeno un acquisto presso il punto vendita specificato
+    if (client != null && puntoVendita != null && haEffettuatoAcquisto(client, puntoVendita)) {
+        recensioneRepository.save(recensione);
+        return "Recensione aggiunta con successo!";
+    } else {
+        return "Il cliente deve aver effettuato almeno un acquisto presso il punto vendita specificato.";
+    }
+}
+
+    
+
+/**
+ * Verifica se il cliente specificato ha effettuato almeno un acquisto presso il punto vendita specificato.
+ *
+ * @param client il cliente per il quale verificare gli acquisti
+ * @param puntoVendita il punto vendita presso il quale verificare gli acquisti
+ * @return true se il cliente ha effettuato almeno un acquisto, false altrimenti
+ */
+private boolean haEffettuatoAcquisto(Client client, PuntoVendita puntoVendita) {
+    List<Acquisto> acquisti = acquistoRepository.findByClientAndPuntoVendita(client, puntoVendita);
+    return !acquisti.isEmpty();
+}
+
+
+
+
 
  
 
