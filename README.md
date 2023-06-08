@@ -222,6 +222,40 @@ Il cliente può accedere alle informazioni su tutte le proprie carte fedeltà al
 ```http
   PUT localhost:8080/modifyCartaFedelta/id
 ```
+
+#### Acquisto
+
+- Inserisce un acquisto all'interno della piattaforma fornendo la carta fedeltà utilizzata per registrare l'acquisto.
+```http
+  POST localhost:8080/insertPurchase/id
+```
+Più tutte le api per operazioni crud e get specifiche.
+
+#### Recensione
+
+- Inserisce una recensione all'interno della piattaforma.
+Se il cliente che vuole rilasciare una recensione per un punto vendita ed il cliente non ha effettuato nessun acquisto presso il punto vendita in questione verrà ritornato un messaggio di errore.
+
+```http
+  POST localhost:8080/insertRecensioneIfCliente
+```
+Più tutte le api per operazioni crud e get specifiche.
+
+#### Tipo Comunicazione
+
+- Inserisce un tipo di comunicazione all'interno della piattaforma.
+```http
+  POST localhost:8080/insertTipoComunicazionePromozionale
+```
+Più tutte le api per operazioni crud e get specifiche.
+
+#### Comunicazione
+
+- Inserisce una comunicazione da parte di un punto vendita alla lista dei suoi clienti. 
+```http
+  POST localhost:8080/insertComunicazione
+```
+Più tutte le api per operazioni crud e get specifiche.
 ## Authors
 
 - [@Fabio De Vitis Michele](https://github.com/FabioDevIsTyping)
